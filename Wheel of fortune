@@ -1,0 +1,67 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import "tailwindcss/tailwind.css";
+
+const REWARDS = [
+  "1 CRG",
+  "2 CRG",
+  "Try Again",
+  "0.5 USDT",
+  "5 CRG",
+  "Jackpot!",
+  "0.1 USDT",
+  "10 CRG",
+];
+
+export default function WheelOfFortune() {
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [reward, setReward] = useState(null);
+
+  const spinWheel = () => {
+    if (isSpinning) return;
+
+    setIsSpinning(true);
+    const randomSegment = Math.floor(Math.random() * REWARDS.length);
+
+    setTimeout(() => {
+      setReward(REWARDS[randomSegment]);
+      setIsSpinning(false);
+    }, 3000); // Simulated spin time
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-r from-blue-900 to-gray-800 flex flex-col items-center justify-center text-white">
+      <h1 className="text-4xl font-bold mb-6">Crypto Games - Wheel of Fortune</h1>
+
+      <motion.div
+        animate={{ rotate: isSpinning ? 3600 : 0 }}
+        transition={{ duration: 3, ease: "easeOut" }}
+        className="relative w-64 h-64 border-4 border-yellow-500 rounded-full"
+      >
+        <div className="absolute inset-0 flex flex-wrap justify-center items-center">
+          {REWARDS.map((reward, i) => (
+            <div
+              key={i}
+              className={`absolute w-1/2 h-1/2 bg-yellow-400 border border-black text-black flex items-center justify-center rotate-[${i * (360 / REWARDS.length)}deg] translate-x-1/2`}
+              style={{ clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)" }}
+            >
+              {reward}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      <button
+        onClick={spinWheel}
+        disabled={isSpinning}
+        className="mt-6 px-6 py-3 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 disabled:bg-gray-600"
+      >
+        {isSpinning ? "Spinning..." : "Spin the Wheel!"}
+      </button>
+
+      {reward && !isSpinning && (
+        <p className="mt-4 text-2xl">You won: {reward}!</p>
+      )}
+    </div>
+  );
+}
