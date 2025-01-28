@@ -18,6 +18,14 @@ h1 {
   margin-bottom: 30px;
 }
 
+/* Buttons Container */
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
 /* Connect Wallet Button */
 .connect-wallet {
   padding: 10px 20px;
@@ -36,33 +44,24 @@ h1 {
   transform: scale(1.05);
 }
 
-/* Wheel Styling */
+/* Wheel Container */
 .wheel-container {
-  margin: 20px auto;
+  margin: 30px auto;
   position: relative;
   width: 300px; /* Diameter of the wheel */
   height: 300px; /* Diameter of the wheel */
 }
 
+/* Wheel Styling */
 .wheel {
   width: 100%;
   height: 100%;
-  border: 6px solid #ffcc00; /* Outer border */
-  border-radius: 50%; /* Makes the wheel circular */
+  border: 6px solid #ffcc00;
+  border-radius: 50%;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(255, 204, 0, 0.7);
   animation: none;
-}
-
-.segment {
-  position: absolute;
-  width: 100%; /* Segment width */
-  height: 100%; /* Segment height */
-  background: linear-gradient(to bottom, #ffcc00, #ff9900); /* Segment colors */
-  border: 1px solid black; /* Optional: Segment borders */
-  transform-origin: 50% 50%; /* Rotate segments around the wheel center */
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%); /* Shapes each segment into a pie slice */
 }
 
 @keyframes spin {
@@ -76,11 +75,11 @@ h1 {
 
 .segment {
   position: absolute;
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(to bottom, #ffcc00, #ff9900);
   border: 1px solid black;
-  transform-origin: 100% 100%;
+  transform-origin: 50% 50%;
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
 }
 
@@ -107,13 +106,6 @@ h1 {
   cursor: not-allowed;
 }
 
-/* Reward Display */
-.reward {
-  font-size: 1.5rem;
-  margin-top: 20px;
-  color: #ffcc00;
-}
-
 /* Claim Rewards Button */
 .claim-button {
   padding: 10px 20px;
@@ -135,4 +127,11 @@ h1 {
 .claim-button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+}
+
+/* Reward Display */
+.reward {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  color: #ffcc00;
 }
