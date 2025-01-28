@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
+import { WalletModalProvider, WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
+import "@solana/wallet-adapter-react-ui/styles.css";
 import "./styles.css";
 
+// Wheel rewards
 const REWARDS = [
   "1 CRG",
   "2 CRG",
@@ -17,6 +22,10 @@ export default function App() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [reward, setReward] = useState(null);
 
+  // Wallet configuration
+  const wallets = [new PhantomWalletAdapter()];
+
+  // Spin wheel logic
   const spinWheel = () => {
     if (isSpinning) return;
 
@@ -30,34 +39,46 @@ export default function App() {
   };
 
   return (
-    <div className="app">
-      <h1>Crypto Games - Wheel of Fortune</h1>
+    <ConnectionProvider endpoint="https://api.devnet.solana.com">
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>
+          <div className="app">
+            <h1>Crypto Games - Wheel of Fortune</h1>
 
-      <motion.div
-        animate={{ rotate: isSpinning ? 3600 : 0 }}
-        transition={{ duration: 3, ease: "easeOut" }}
-        className="wheel"
-      >
-        <div className="segments">
-          {REWARDS.map((reward, i) => (
-            <div
-              key={i}
-              className="segment"
-              style={{
-                transform: `rotate(${i * (360 / REWARDS.length)}deg)`,
-              }}
+            {/* Connect Wallet Button */}
+            <WalletMultiButton />
+
+            {/* Spinning Wheel */}
+            <motion.div
+              animate={{ rotate: isSpinning ? 3600 : 0 }}
+              transition={{ duration: 3, ease: "easeOut" }}
+              className="wheel"
             >
-              {reward}
-            </div>
-          ))}
-        </div>
-      </motion.div>
+              <div className="segments">
+                {REWARDS.map((reward, i) => (
+                  <div
+                    key={i}
+                    className="segment"
+                    style={{
+                      transform: `rotate(${i * (360 / REWARDS.length)}deg)`,
+                    }}
+                  >
+                    {reward}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
-      <button onClick={spinWheel} disabled={isSpinning}>
-        {isSpinning ? "Spinning..." : "Spin the Wheel!"}
-      </button>
+            {/* Spin Button */}
+            <button onClick={spinWheel} disabled={isSpinning}>
+              {isSpinning ? "Spinning..." : "Spin the Wheel!"}
+            </button>
 
-      {reward && !isSpinning && <p>You won: {reward}!</p>}
-    </div>
+            {/* Display Reward */}
+            {reward && !isSpinning && <p>You won: {reward}!</p>}
+          </div>
+        </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
   );
 }
