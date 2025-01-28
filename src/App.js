@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Connection, clusterApiUrl, PublicKey } from "@solana/web3.js";
+import { motion } from "framer-motion";
+import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 import "./styles.css";
 
 // Rewards for the wheel
@@ -46,6 +47,17 @@ export default function App() {
     }, 3000); // Simulated spin time
   };
 
+  // Claim Rewards function (placeholder for now)
+  const claimRewards = () => {
+    if (!walletAddress) {
+      alert("Connect your wallet first!");
+      return;
+    }
+
+    // Simulate claim process (replace with actual blockchain interaction later)
+    alert(`Claiming your rewards: ${reward || "No rewards yet!"}`);
+  };
+
   return (
     <div className="app">
       {/* Title */}
@@ -61,32 +73,34 @@ export default function App() {
       )}
 
       {/* Wheel */}
-      <div className="wheel-container">
-        <div
-          className="wheel"
-          style={{
-            animation: isSpinning ? "spin 3s ease-out" : "none",
-          }}
-        >
-          <div className="segments">
-            {REWARDS.map((reward, i) => (
-              <div
-                key={i}
-                className="segment"
-                style={{
-                  transform: `rotate(${i * (360 / REWARDS.length)}deg)`,
-                }}
-              >
-                {reward}
-              </div>
-            ))}
-          </div>
+      <motion.div
+        animate={{ rotate: isSpinning ? 3600 : 0 }}
+        transition={{ duration: 3, ease: "easeOut" }}
+        className="wheel"
+      >
+        <div className="segments">
+          {REWARDS.map((reward, i) => (
+            <div
+              key={i}
+              className="segment"
+              style={{
+                transform: `rotate(${i * (360 / REWARDS.length)}deg)`,
+              }}
+            >
+              {reward}
+            </div>
+          ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Spin Button */}
       <button onClick={spinWheel} disabled={isSpinning} className="spin-button">
         {isSpinning ? "Spinning..." : "Spin the Wheel!"}
+      </button>
+
+      {/* Claim Rewards Button */}
+      <button onClick={claimRewards} className="claim-button">
+        Claim Rewards
       </button>
 
       {/* Display Reward */}
