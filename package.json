@@ -6,7 +6,12 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.1",
-    "framer-motion": "^6.5.1"
+    "framer-motion": "^6.5.1",
+    "@solana/wallet-adapter-react": "^0.17.0",
+    "@solana/wallet-adapter-wallets": "^0.17.0",
+    "@solana/wallet-adapter-base": "^0.17.0",
+    "@solana/wallet-adapter-react-ui": "^0.17.0",
+    "@solana/web3.js": "^1.70.0"
   },
   "scripts": {
     "start": "react-scripts start",
