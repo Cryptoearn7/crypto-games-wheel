@@ -9,7 +9,6 @@ const REWARDS = [
   "Try Again",
   "0.5 USDT",
   "5 CRG",
-  "Jackpot!",
   "0.1 USDT",
   "10 CRG",
 ];
