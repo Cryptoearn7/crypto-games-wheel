@@ -1,9 +1,9 @@
+/* General Styling */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: url('https://cdn.pixabay.com/photo/2024/08/08/13/01/room-8954551_1280.jpg') no-repeat center center;
-  background-size: cover;
+  background: linear-gradient(to right, #1a1a40, #4a4a72);
   color: white;
   text-align: center;
 }
@@ -18,6 +18,7 @@ h1 {
   margin-bottom: 30px;
 }
 
+/* Wheel Styling */
 .wheel {
   width: 300px;
   height: 300px;
@@ -45,6 +46,7 @@ h1 {
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
 }
 
+/* Spin Button Styling */
 button {
   padding: 10px 20px;
   font-size: 1.2rem;
@@ -70,4 +72,26 @@ button:disabled {
 p {
   font-size: 1.5rem;
   margin-top: 20px;
+}
+
+/* Wallet Button Styling */
+.wallet-adapter-button {
+  background-color: #ffcc00 !important;
+  color: black !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  padding: 10px 20px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 8px rgba(255, 204, 0, 0.6) !important;
+  transition: background-color 0.3s, transform 0.2s !important;
+}
+
+.wallet-adapter-button:hover {
+  background-color: #ff9900 !important;
+  transform: scale(1.05) !important;
+}
+
+.wallet-adapter-button:disabled {
+  background-color: #cccccc !important;
+  cursor: not-allowed !important;
 }
