@@ -103,3 +103,26 @@ h1 {
   margin-top: 20px;
   color: #ffcc00;
 }
+
+/* Claim Rewards Button */
+.claim-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #00cc66;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 204, 102, 0.6);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.claim-button:hover {
+  background-color: #00994d;
+  transform: scale(1.05);
+}
+
+.claim-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
