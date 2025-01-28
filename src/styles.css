@@ -18,22 +18,50 @@ h1 {
   margin-bottom: 30px;
 }
 
+/* Connect Wallet Button */
+.connect-wallet {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #ffcc00;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 204, 0, 0.6);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.connect-wallet:hover {
+  background-color: #ff9900;
+  transform: scale(1.05);
+}
+
 /* Wheel Styling */
-.wheel {
+.wheel-container {
+  margin: 20px auto;
+  position: relative;
   width: 300px;
   height: 300px;
-  margin: 20px auto;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
   border: 6px solid #ffcc00;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(255, 204, 0, 0.7);
+  animation: none;
 }
 
-.segments {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(3600deg);
+  }
 }
 
 .segment {
@@ -46,8 +74,8 @@ h1 {
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
 }
 
-/* Spin Button Styling */
-button {
+/* Spin Button */
+.spin-button {
   padding: 10px 20px;
   font-size: 1.2rem;
   color: black;
@@ -59,39 +87,19 @@ button {
   transition: background-color 0.3s, transform 0.2s;
 }
 
-button:hover {
+.spin-button:hover {
   background-color: #ff9900;
   transform: scale(1.05);
 }
 
-button:disabled {
+.spin-button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
 }
 
-p {
+/* Reward Display */
+.reward {
   font-size: 1.5rem;
   margin-top: 20px;
-}
-
-/* Wallet Button Styling */
-.wallet-adapter-button {
-  background-color: #ffcc00 !important;
-  color: black !important;
-  font-size: 1rem !important;
-  border-radius: 8px !important;
-  padding: 10px 20px !important;
-  cursor: pointer !important;
-  box-shadow: 0 4px 8px rgba(255, 204, 0, 0.6) !important;
-  transition: background-color 0.3s, transform 0.2s !important;
-}
-
-.wallet-adapter-button:hover {
-  background-color: #ff9900 !important;
-  transform: scale(1.05) !important;
-}
-
-.wallet-adapter-button:disabled {
-  background-color: #cccccc !important;
-  cursor: not-allowed !important;
+  color: #ffcc00;
 }
