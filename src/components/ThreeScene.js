@@ -1,14 +1,39 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 function RoomModel() {
-  const { scene } = useGLTF("/models/room.glb"); // Ensure this matches your model path
+  const { scene } = useGLTF("/models/room.glb"); // Ensure this path matches your model
   return <primitive object={scene} scale={1} />;
 }
 
-export default function ThreeScene({ handleSpin, handleClaim }) {
+export default function ThreeScene({ handleSpin }) {
+  const [walletAddress, setWalletAddress] = useState(null);
+
+  // ✅ Connect to Phantom Wallet (Using Solana Web3.js)
+  const connectWallet = async () => {
+    if (window.solana && window.solana.isPhantom) {
+      try {
+        const response = await window.solana.connect();
+        setWalletAddress(response.publicKey.toString());
+        console.log("Connected with Public Key:", response.publicKey.toString());
+      } catch (err) {
+        console.error("Error connecting to wallet:", err);
+      }
+    } else {
+      alert("Phantom Wallet not found! Install it from https://phantom.app");
+    }
+  };
+
+  // ✅ Claim Rewards (Placeholder, Replace with Real Logic)
+  const claimRewards = () => {
+    if (!walletAddress) {
+      alert("Connect your wallet first!");
+      return;
+    }
+    alert("Claiming your rewards...");
+  };
+
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
       {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS */}
@@ -23,10 +48,26 @@ export default function ThreeScene({ handleSpin, handleClaim }) {
           padding: "0 20px",
         }}
       >
-        {/* Phantom Wallet Connect Button */}
-        <WalletMultiButton />
+        {/* ✅ Connect Wallet Button */}
+        {!walletAddress ? (
+          <button
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              background: "lightblue",
+              border: "none",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+            onClick={connectWallet}
+          >
+            Connect Wallet
+          </button>
+        ) : (
+          <p style={{ color: "white" }}>Connected: {walletAddress}</p>
+        )}
 
-        {/* Claim Button (Real Functionality) */}
+        {/* ✅ Claim Rewards Button */}
         <button
           style={{
             padding: "10px 20px",
@@ -36,7 +77,7 @@ export default function ThreeScene({ handleSpin, handleClaim }) {
             borderRadius: "10px",
             cursor: "pointer",
           }}
-          onClick={handleClaim}
+          onClick={claimRewards}
         >
           Claim Rewards
         </button>
