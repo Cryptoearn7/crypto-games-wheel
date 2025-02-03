@@ -56,7 +56,7 @@ export default function ThreeScene() {
 
   return (
     <Canvas
-      camera={{ position: [4, 8, 12], rotation: [-0.2, 0, 0], fov: 50 }}
+      camera={{ position: [4, 4, 10], rotation: [-2, 0, 0], fov: 50 }}
       style={{ width: "100vw", height: "calc(100vh - 70px)", position: "absolute", top: "70px", left: "0" }}
     >
       <ambientLight intensity={0.5} />
