@@ -1,20 +1,21 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 function RoomModel() {
-  const { scene } = useGLTF("/models/room.glb"); // Make sure this path matches your uploaded file
+  const { scene } = useGLTF("/models/room.glb"); // Ensure this matches your model path
   return <primitive object={scene} scale={1} />;
 }
 
-export default function ThreeScene() {
+export default function ThreeScene({ handleSpin, handleClaim }) {
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
-      {/* 🔹 TOP BAR WITH BUTTONS */}
+      {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS */}
       <div
         style={{
           width: "100%",
-          height: "60px",
+          height: "70px",
           background: "black",
           display: "flex",
           justifyContent: "space-between",
@@ -22,20 +23,10 @@ export default function ThreeScene() {
           padding: "0 20px",
         }}
       >
-        <button
-          style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            background: "lightblue",
-            border: "none",
-            borderRadius: "10px",
-            cursor: "pointer",
-          }}
-          onClick={() => alert("Connecting wallet...")}
-        >
-          Connect Wallet
-        </button>
+        {/* Phantom Wallet Connect Button */}
+        <WalletMultiButton />
 
+        {/* Claim Button (Real Functionality) */}
         <button
           style={{
             padding: "10px 20px",
@@ -45,13 +36,13 @@ export default function ThreeScene() {
             borderRadius: "10px",
             cursor: "pointer",
           }}
-          onClick={() => alert("Claiming rewards!")}
+          onClick={handleClaim}
         >
           Claim Rewards
         </button>
       </div>
 
-      {/* 🔹 3D SCENE BELOW THE TOP BAR */}
+      {/* 🔹 3D ROOM BELOW THE TOP BAR */}
       <div style={{ flex: 1, position: "relative" }}>
         <Canvas
           style={{ width: "100%", height: "100%" }}
@@ -64,6 +55,30 @@ export default function ThreeScene() {
           </Suspense>
           <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
         </Canvas>
+
+        {/* 🔹 Spin Button (Placing Slightly Above 3D Scene) */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "10%",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <button
+            style={{
+              padding: "15px 30px",
+              fontSize: "18px",
+              background: "yellow",
+              border: "none",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+            onClick={handleSpin}
+          >
+            Spin the Wheel!
+          </button>
+        </div>
       </div>
     </div>
   );
