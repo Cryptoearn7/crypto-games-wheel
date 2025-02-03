@@ -15,7 +15,7 @@ export default function ThreeScene() {
       <Suspense fallback={null}>
         <RoomModel />
       </Suspense>
-      <OrbitControls />
+      <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
     </Canvas>
   );
 }
