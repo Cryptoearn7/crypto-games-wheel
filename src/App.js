@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import ThreeScene from "./ThreeScene";
+import ThreeScene from "./components/ThreeScene";
 import "./styles.css";
 
 // Rewards for the wheel
