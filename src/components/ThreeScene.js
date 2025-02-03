@@ -12,7 +12,7 @@ export default function ThreeScene() {
     <Canvas camera={{ position: [0, 2, 5], fov: 50 }}>
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
-      <Suspense fallback={<span>Loading 3D Scene...</span>}>
+      <Suspense fallback={null}>
         <RoomModel />
       </Suspense>
       <OrbitControls />
