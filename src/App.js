@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import ThreeScene from "./components/ThreeScene";
+import ThreeScene from "./components/ThreeScene"; // Ensure correct path
 import "./styles.css";
 
 // Rewards for the wheel
@@ -21,7 +19,7 @@ export default function App() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [reward, setReward] = useState(null);
 
-  // Connect Phantom Wallet
+  // ✅ Connect Phantom Wallet (Using Solana Web3.js)
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
@@ -36,7 +34,7 @@ export default function App() {
     }
   };
 
-  // Spin wheel logic
+  // ✅ Spin Wheel Logic
   const spinWheel = () => {
     if (isSpinning) return;
 
@@ -50,14 +48,12 @@ export default function App() {
     }, 3000); // Simulated spin time
   };
 
-  // Claim Rewards function (placeholder for now)
+  // ✅ Claim Rewards Logic (Placeholder, replace with actual blockchain logic)
   const claimRewards = () => {
     if (!walletAddress) {
       alert("Connect your wallet first!");
       return;
     }
-
-    // Simulate claim process (replace with actual blockchain interaction later)
     alert(`Claiming your rewards: ${reward || "No rewards yet!"}`);
   };
 
@@ -75,7 +71,7 @@ export default function App() {
           padding: "0 20px",
         }}
       >
-        {/* Phantom Wallet Connect Button */}
+        {/* ✅ Phantom Wallet Connect Button */}
         {!walletAddress ? (
           <button
             style={{
@@ -94,7 +90,7 @@ export default function App() {
           <p style={{ color: "white" }}>Connected: {walletAddress}</p>
         )}
 
-        {/* Claim Button (Real Functionality) */}
+        {/* ✅ Claim Rewards Button */}
         <button
           style={{
             padding: "10px 20px",
