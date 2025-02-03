@@ -8,9 +8,14 @@ function RoomModel() {
 }
 
 export default function ThreeScene({ handleSpin }) {
+  console.log("Rendering ThreeScene Component"); // Debugging check
+
   return (
-    <div style={{ position: "absolute", top: "70px", left: "0", width: "100vw", height: "calc(100vh - 70px)" }}>
-      <Canvas camera={{ position: [4, 8, 12], fov: 50 }}>
+    <>
+      <Canvas
+        style={{ width: "100vw", height: "calc(100vh - 70px)" }}
+        camera={{ position: [4, 8, 12], fov: 50 }}
+      >
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
         <Suspense fallback={null}>
@@ -43,6 +48,6 @@ export default function ThreeScene({ handleSpin }) {
           Spin the Wheel!
         </button>
       </div>
-    </div>
+    </>
   );
 }
