@@ -9,7 +9,7 @@ function RoomModel() {
 
 export default function ThreeScene({ handleSpin }) {
   return (
-    <div style={{ flex: 1, position: "relative" }}>
+    <div style={{ flex: 1, width: "100vw", height: "100vh", position: "relative" }}>
       <Canvas
         style={{ width: "100%", height: "100%" }}
         camera={{ position: [4, 8, 12], fov: 50 }}
