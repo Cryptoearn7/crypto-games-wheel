@@ -3,21 +3,8 @@ import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 import ThreeScene from "./components/ThreeScene"; // Ensure correct path
 import "./styles.css";
 
-// Rewards for the wheel
-const REWARDS = [
-  "1 CRG",
-  "2 CRG",
-  "Try Again",
-  "0.5 USDT",
-  "5 CRG",
-  "0.1 USDT",
-  "10 CRG",
-];
-
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
-  const [isSpinning, setIsSpinning] = useState(false);
-  const [reward, setReward] = useState(null);
 
   // ✅ Connect Phantom Wallet (Using Solana Web3.js)
   const connectWallet = async () => {
@@ -34,27 +21,13 @@ export default function App() {
     }
   };
 
-  // ✅ Spin Wheel Logic
-  const spinWheel = () => {
-    if (isSpinning) return;
-
-    setIsSpinning(true);
-    const randomSegment = Math.floor(Math.random() * REWARDS.length);
-
-    setTimeout(() => {
-      setReward(REWARDS[randomSegment]);
-      setIsSpinning(false);
-      alert(`You won: ${REWARDS[randomSegment]}!`);
-    }, 3000); // Simulated spin time
-  };
-
-  // ✅ Claim Rewards Logic (Placeholder, replace with actual blockchain logic)
+  // ✅ Claim Rewards Logic (Placeholder)
   const claimRewards = () => {
     if (!walletAddress) {
       alert("Connect your wallet first!");
       return;
     }
-    alert(`Claiming your rewards: ${reward || "No rewards yet!"}`);
+    alert(`Claiming your rewards...`);
   };
 
   return (
@@ -69,6 +42,10 @@ export default function App() {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "0 20px",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 100,
         }}
       >
         {/* ✅ Phantom Wallet Connect Button */}
@@ -108,7 +85,7 @@ export default function App() {
 
       {/* 🔹 3D ROOM BELOW THE TOP BAR */}
       <div style={{ flex: 1, position: "relative" }}>
-        <ThreeScene handleSpin={spinWheel} />
+        <ThreeScene />
       </div>
     </div>
   );
