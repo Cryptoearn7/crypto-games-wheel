@@ -109,30 +109,6 @@ export default function App() {
       {/* 🔹 3D ROOM BELOW THE TOP BAR */}
       <div style={{ flex: 1, position: "relative" }}>
         <ThreeScene handleSpin={spinWheel} />
-
-        {/* 🔹 Spin Button (Placing Slightly Above 3D Scene) */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "10%",
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}
-        >
-          <button
-            style={{
-              padding: "15px 30px",
-              fontSize: "18px",
-              background: "yellow",
-              border: "none",
-              borderRadius: "10px",
-              cursor: "pointer",
-            }}
-            onClick={spinWheel}
-          >
-            Spin the Wheel!
-          </button>
-        </div>
       </div>
     </div>
   );
