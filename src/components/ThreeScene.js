@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { useNavigate } from "react-router-dom"; // If using React Router for navigation
 
 function RoomModel({ navigateToGame }) {
   const { scene } = useGLTF("/models/room.glb"); // Ensure this path matches your model file
@@ -39,8 +38,6 @@ function RoomModel({ navigateToGame }) {
 }
 
 export default function ThreeScene() {
-  const navigate = useNavigate(); // React Router navigation
-
   const navigateToGame = (game) => {
     switch (game) {
       case "wheel":
@@ -63,4 +60,11 @@ export default function ThreeScene() {
       style={{ width: "100vw", height: "calc(100vh - 70px)", position: "absolute", top: "70px", left: "0" }}
     >
       <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 
+      <pointLight position={[10, 10, 10]} />
+      <Suspense fallback={null}>
+        <RoomModel navigateToGame={navigateToGame} />
+      </Suspense>
+      <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
+    </Canvas>
+  );
+}
