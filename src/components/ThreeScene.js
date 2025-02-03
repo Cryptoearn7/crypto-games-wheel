@@ -13,8 +13,8 @@ export default function ThreeScene({ handleSpin }) {
   return (
     <>
       <Canvas
-        style={{ width: "100vw", height: "calc(100vh - 70px)" }}
         camera={{ position: [4, 8, 12], fov: 50 }}
+        style={{ width: "100vw", height: "calc(100vh - 70px)", position: "absolute", top: "70px", left: "0" }}
       >
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
@@ -31,7 +31,7 @@ export default function ThreeScene({ handleSpin }) {
           bottom: "10%",
           left: "50%",
           transform: "translateX(-50%)",
-          zIndex: 10, // Ensures the button is on top
+          zIndex: 10,
         }}
       >
         <button
