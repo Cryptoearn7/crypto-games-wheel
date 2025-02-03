@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import ThreeScene from "./ThreeScene";
 import "./styles.css";
 
 // Rewards for the wheel
@@ -44,6 +46,7 @@ export default function App() {
     setTimeout(() => {
       setReward(REWARDS[randomSegment]);
       setIsSpinning(false);
+      alert(`You won: ${REWARDS[randomSegment]}!`);
     }, 3000); // Simulated spin time
   };
 
@@ -59,54 +62,82 @@ export default function App() {
   };
 
   return (
-    <div className="app">
-      {/* Title */}
-      <h1>Crypto Games - Wheel of Fortune</h1>
+    <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+      {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS */}
+      <div
+        style={{
+          width: "100%",
+          height: "70px",
+          background: "black",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "0 20px",
+        }}
+      >
+        {/* Phantom Wallet Connect Button */}
+        {!walletAddress ? (
+          <button
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              background: "lightblue",
+              border: "none",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+            onClick={connectWallet}
+          >
+            Connect Wallet
+          </button>
+        ) : (
+          <p style={{ color: "white" }}>Connected: {walletAddress}</p>
+        )}
 
-      {/* Connect Wallet Button */}
-      {!walletAddress ? (
-        <button onClick={connectWallet} className="connect-wallet">
-          Connect Phantom Wallet
-        </button>
-      ) : (
-        <p>Connected Wallet: {walletAddress}</p>
-      )}
-
-      {/* Buttons Container */}
-      <div className="buttons-container">
-        <button onClick={spinWheel} disabled={isSpinning} className="spin-button">
-          {isSpinning ? "Spinning..." : "Spin the Wheel!"}
-        </button>
-        <button onClick={claimRewards} className="claim-button">
+        {/* Claim Button (Real Functionality) */}
+        <button
+          style={{
+            padding: "10px 20px",
+            fontSize: "16px",
+            background: "lightgreen",
+            border: "none",
+            borderRadius: "10px",
+            cursor: "pointer",
+          }}
+          onClick={claimRewards}
+        >
           Claim Rewards
         </button>
       </div>
 
-      {/* Wheel */}
-      <div className="wheel-container">
-        <motion.div
-          animate={{ rotate: isSpinning ? 3600 : 0 }}
-          transition={{ duration: 3, ease: "easeOut" }}
-          className="wheel"
-        >
-          <div className="segments">
-            {REWARDS.map((reward, i) => (
-              <div
-                key={i}
-                className="segment"
-                style={{
-                  transform: `rotate(${i * (360 / REWARDS.length)}deg)`,
-                }}
-              >
-                {reward}
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+      {/* 🔹 3D ROOM BELOW THE TOP BAR */}
+      <div style={{ flex: 1, position: "relative" }}>
+        <ThreeScene handleSpin={spinWheel} />
 
-      {/* Display Reward */}
-      {reward && !isSpinning && <p className="reward">You won: {reward}!</p>}
+        {/* 🔹 Spin Button (Placing Slightly Above 3D Scene) */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "10%",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <button
+            style={{
+              padding: "15px 30px",
+              fontSize: "18px",
+              background: "yellow",
+              border: "none",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+            onClick={spinWheel}
+          >
+            Spin the Wheel!
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
