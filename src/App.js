@@ -6,14 +6,16 @@ import "./styles.css";
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
 
-  // ✅ Check Wallet Connection State from Phantom
+  // ✅ Detect Wallet Connection State Automatically
   useEffect(() => {
     if (window.solana && window.solana.isPhantom) {
+      // Listen for connect event
       window.solana.on("connect", () => {
         setWalletAddress(window.solana.publicKey.toString());
         console.log("Wallet Connected:", window.solana.publicKey.toString());
       });
 
+      // Listen for disconnect event
       window.solana.on("disconnect", () => {
         setWalletAddress(null);
         console.log("Wallet Disconnected");
@@ -31,7 +33,7 @@ export default function App() {
     }
   }, []);
 
-  // ✅ Let Phantom Handle Connection Requests
+  // ✅ Connect Wallet
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
@@ -46,10 +48,25 @@ export default function App() {
     }
   };
 
-  // ✅ Let Phantom Handle Disconnection Requests
+  // ✅ Disconnect Wallet & Remove App Connection from Phantom
   const disconnectWallet = async () => {
-    if (window.solana?.isPhantom) {
-      await window.solana.disconnect();
+    try {
+      if (window.solana?.isPhantom) {
+        await window.solana.disconnect(); // Force disconnect from Phantom
+      }
+
+      // Ensure session is cleared
+      setWalletAddress(null);
+
+      console.log("Wallet fully disconnected. App should be removed from Phantom.");
+
+      // ✅ Listen for Phantom's response & confirm removal
+      window.solana.on("disconnect", () => {
+        console.log("Phantom confirmed app removal.");
+        setWalletAddress(null);
+      });
+    } catch (err) {
+      console.error("Error disconnecting wallet:", err);
     }
   };
 
@@ -80,7 +97,7 @@ export default function App() {
           zIndex: 100,
         }}
       >
-        {/* ✅ Wallet Connection Handling (No Disconnect Button - Managed by Phantom) */}
+        {/* ✅ Wallet Connection Handling (Now With Disconnect Button) */}
         <div style={{ textAlign: "left" }}>
           {!walletAddress ? (
             <button
@@ -97,7 +114,23 @@ export default function App() {
               Connect Wallet
             </button>
           ) : (
-            <p style={{ color: "white" }}>Connected: {walletAddress}</p>
+            <div>
+              <p style={{ color: "white", marginBottom: "5px" }}>Connected: {walletAddress}</p>
+              <button
+                style={{
+                  padding: "5px 15px",
+                  fontSize: "14px",
+                  background: "red",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                }}
+                onClick={disconnectWallet}
+              >
+                Disconnect
+              </button>
+            </div>
           )}
         </div>
 
