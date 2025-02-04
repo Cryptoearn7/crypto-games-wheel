@@ -6,19 +6,35 @@ import "./styles.css";
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
 
+  // ✅ Check Wallet Connection State from Phantom
   useEffect(() => {
-    // Ensure wallet does not auto-reconnect
-    if (window.solana?.isConnected) {
-      setWalletAddress(window.solana.publicKey.toString());
+    if (window.solana && window.solana.isPhantom) {
+      window.solana.on("connect", () => {
+        setWalletAddress(window.solana.publicKey.toString());
+        console.log("Wallet Connected:", window.solana.publicKey.toString());
+      });
+
+      window.solana.on("disconnect", () => {
+        setWalletAddress(null);
+        console.log("Wallet Disconnected");
+      });
+
+      // Check if already connected
+      (async () => {
+        try {
+          const response = await window.solana.connect({ onlyIfTrusted: true });
+          setWalletAddress(response.publicKey.toString());
+        } catch (err) {
+          console.log("No existing wallet connection.");
+        }
+      })();
     }
   }, []);
 
-  // ✅ Force Wallet Approval Every Time
+  // ✅ Let Phantom Handle Connection Requests
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
-        await disconnectWallet(); // First, force a disconnect before connecting
-
         const response = await window.solana.connect();
         setWalletAddress(response.publicKey.toString());
         console.log("Connected with Public Key:", response.publicKey.toString());
@@ -30,38 +46,14 @@ export default function App() {
     }
   };
 
-  // ✅ Fully Disconnect Wallet and Forget the Session
+  // ✅ Let Phantom Handle Disconnection Requests
   const disconnectWallet = async () => {
-    try {
-      if (window.solana?.isPhantom) {
-        await window.solana.disconnect(); // Disconnect wallet
-      }
-
-      // Clear any stored wallet data
-      localStorage.removeItem("walletName");
-      localStorage.removeItem("solana_wallet_adapter");
-      sessionStorage.clear();
-
-      // Manually reset Phantom state
-      window.solana._wallet = null;
-      window.solana._publicKey = null;
-      window.solana.isConnected = false;
-
-      setWalletAddress(null);
-      console.log("Wallet fully disconnected.");
-
-      // Force Phantom UI to reset connection
-      window.solana.on("disconnect", () => {
-        console.log("Phantom has been fully disconnected.");
-        setWalletAddress(null);
-      });
-
-    } catch (err) {
-      console.error("Error disconnecting wallet:", err);
+    if (window.solana?.isPhantom) {
+      await window.solana.disconnect();
     }
   };
 
-  // ✅ Claim Rewards Logic (Placeholder)
+  // ✅ Claim Rewards (Checks Wallet First)
   const claimRewards = () => {
     if (!walletAddress) {
       alert("Connect your wallet first!");
@@ -88,7 +80,7 @@ export default function App() {
           zIndex: 100,
         }}
       >
-        {/* ✅ Wallet Connection Handling */}
+        {/* ✅ Wallet Connection Handling (No Disconnect Button - Managed by Phantom) */}
         <div style={{ textAlign: "left" }}>
           {!walletAddress ? (
             <button
@@ -105,23 +97,7 @@ export default function App() {
               Connect Wallet
             </button>
           ) : (
-            <div>
-              <p style={{ color: "white", marginBottom: "5px" }}>Connected: {walletAddress}</p>
-              <button
-                style={{
-                  padding: "5px 15px",
-                  fontSize: "14px",
-                  background: "red",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
-                onClick={disconnectWallet}
-              >
-                Disconnect
-              </button>
-            </div>
+            <p style={{ color: "white" }}>Connected: {walletAddress}</p>
           )}
         </div>
 
