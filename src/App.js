@@ -5,7 +5,7 @@ import "./styles.css";
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
 
-  // ✅ Detect Wallet Connection State automatically
+  // ✅ Detect Wallet Connection State Automatically
   useEffect(() => {
     if (window.solana && window.solana.isPhantom) {
       window.solana.on("connect", () => {
@@ -68,25 +68,21 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* 🔹 TRANSPARENT TOP BAR */}
-      <div className="top-bar">
-        {/* ✅ Wallet Connection Handling */}
-        <div>
-          {!walletAddress ? (
-            <button className="connect-button" onClick={connectWallet}>
-              Connect Wallet
+      {/* 🔹 FLOATING BUTTONS */}
+      <div className="top-buttons">
+        {!walletAddress ? (
+          <button className="connect-button" onClick={connectWallet}>
+            Connect Wallet
+          </button>
+        ) : (
+          <>
+            <button className="disconnect-button" onClick={disconnectWallet}>
+              Disconnect
             </button>
-          ) : (
-            <>
-              <button className="disconnect-button" onClick={disconnectWallet}>
-                Disconnect
-              </button>
-              <p className="wallet-text">Connected: {walletAddress}</p>
-            </>
-          )}
-        </div>
+            <p className="wallet-text">Connected: {walletAddress}</p>
+          </>
+        )}
 
-        {/* ✅ Claim Rewards Button */}
         <button className="claim-button" onClick={claimRewards}>
           Claim Rewards
         </button>
