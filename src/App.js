@@ -96,9 +96,9 @@ export default function App() {
 
         {/* ✅ Center Section (Rewards + Claim Button) */}
         <div className="center-section">
-          <div className="rewards-display">Total Rewards: {totalRewards} CRG</div>
+          <div className="rewards-display">Rewards: {totalRewards} CRG</div>
           <button className="claim-button" onClick={claimRewards}>
-            Claim Rewards
+            Claim
           </button>
         </div>
       </div>
