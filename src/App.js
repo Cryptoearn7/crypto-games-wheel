@@ -79,25 +79,11 @@ export default function App() {
     alert(`Claiming your rewards...`);
   };
 
-  return (
-    <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+    return (
+    <div className="app">
       {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS (80px height) */}
-      <div
-        style={{
-          width: "100%",
-          height: "80px",
-          background: "black",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "0 20px",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: 100,
-        }}
-      >
-        {/* ✅ Wallet Connection Handling (Now With Disconnect Button) */}
+      <div className="top-bar">
+        {/* ✅ Wallet Connection Handling */}
         <div style={{ textAlign: "left" }}>
           {!walletAddress ? (
             <button
@@ -150,10 +136,9 @@ export default function App() {
         </button>
       </div>
 
-      {/* 🔹 3D ROOM BELOW THE TOP BAR (Adjusted for 80px Height) */}
-      <div style={{ flex: 1, position: "relative", marginTop: "80px" }}>
+      {/* 🔹 3D ROOM BELOW THE TOP BAR (Flush with Black Bar) */}
+      <div className="three-container">
         <ThreeScene />
       </div>
     </div>
   );
-}
