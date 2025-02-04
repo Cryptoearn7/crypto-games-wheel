@@ -5,7 +5,7 @@ import "./styles.css";
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
 
-  // ✅ Detect Wallet Connection State automatically
+  // ✅ Detect Wallet Connection State Automatically
   useEffect(() => {
     if (window.solana && window.solana.isPhantom) {
       window.solana.on("connect", () => {
