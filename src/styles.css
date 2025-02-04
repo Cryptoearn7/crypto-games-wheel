@@ -3,22 +3,27 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: black; /* Set background to black to match the top bar */
+  background: black;
   color: white;
   text-align: center;
-  overflow: hidden; /* Prevents scrolling issues */
+  overflow: hidden; /* Prevents unwanted scrolling */
 }
 
-.app {
-  padding: 0;
-  margin: 0;
+/* 🔹 Ensures Full-Screen 3D Scene */
+.three-container {
+  width: 100vw;
+  height: 100vh; /* Full screen height */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensures 3D is in the background */
 }
 
-/* 🔹 Fixing the Black Top Bar */
+/* 🔹 Fixing the Black Top Bar (Can Be Transparent) */
 .top-bar {
   width: 100%;
   height: 80px;
-  background: black;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,10 +31,11 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 10; /* Ensures it stays above the 3D scene */
+  transition: background 0.3s ease-in-out;
 }
 
-/* Wallet & Buttons */
+/* Buttons - Keep Them on Top */
 .connect-button,
 .disconnect-button,
 .claim-button {
@@ -57,24 +63,4 @@ body {
 .wallet-text {
   color: white;
   margin-bottom: 5px;
-}
-
-/* 🔹 3D Scene Adjustment - Removes Extra Space */
-.three-container {
-  width: 100vw;
-  height: calc(100vh - 80px); /* Ensures the 3D scene perfectly fills the screen */
-  position: absolute;
-  top: 80px; /* Aligns the 3D scene directly under the black bar */
-  left: 0;
-  overflow: hidden;
-}
-
-/* Ensures Canvas Takes Full Width */
-canvas {
-  width: 100vw;
-  height: calc(100vh - 80px); /* Same as .three-container to ensure full screen */
-  display: block;
-  position: absolute;
-  top: 80px;
-  left: 0;
 }
