@@ -29,6 +29,36 @@ body {
   z-index: 100;
 }
 
+/* Wallet & Buttons */
+.connect-button,
+.disconnect-button,
+.claim-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.connect-button {
+  background: lightblue;
+}
+
+.disconnect-button {
+  background: red;
+  color: white;
+}
+
+.claim-button {
+  background: lightgreen;
+}
+
+/* Wallet Address Text */
+.wallet-text {
+  color: white;
+  margin-bottom: 5px;
+}
+
 /* 🔹 3D Scene Adjustment - Removes Extra Space */
 .three-container {
   width: 100vw;
