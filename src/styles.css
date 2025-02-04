@@ -35,23 +35,25 @@ body {
   backdrop-filter: blur(8px);
 }
 
-/* 🔹 Centered Middle Section */
-.center-section {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-}
-
-/* 🔹 Wallet Section (Left) */
+/* 🔹 Wallet Section (Fixed Width to Prevent Movement) */
 .wallet-section {
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 180px; /* Ensures fixed width so buttons don’t shift */
+  justify-content: flex-start;
 }
 
-/* 🔹 Rewards Section */
+/* 🔹 Center Section (Rewards + Claim Button) */
+.center-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-grow: 1;
+}
+
+/* 🔹 Rewards Display */
 .rewards-display {
   font-size: 18px;
   font-weight: bold;
