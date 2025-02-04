@@ -30,6 +30,12 @@ export default function App() {
     }
   }, []);
 
+  // ✅ Format Wallet Address (Only First 2 & Last 4 Characters)
+  const formatWalletAddress = (address) => {
+    if (!address) return "";
+    return `${address.slice(0, 2)}...${address.slice(-4)}`;
+  };
+
   // ✅ Connect Wallet
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
@@ -80,7 +86,7 @@ export default function App() {
             </button>
           ) : (
             <>
-              <p className="wallet-text">Connected: {walletAddress}</p>
+              <p className="wallet-text">{formatWalletAddress(walletAddress)}</p>
               <button className="disconnect-button" onClick={disconnectWallet}>
                 Disconnect
               </button>
