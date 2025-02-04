@@ -71,7 +71,7 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* 🔹 FLOATING BUTTONS (No Background Bar) */}
+      {/* 🔹 FLOATING BUTTONS (No Black Bar) */}
       <div className="top-buttons">
         {/* ✅ Wallet Connection Handling */}
         {!walletAddress ? (
