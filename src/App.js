@@ -6,11 +6,12 @@ import "./styles.css";
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
 
-  // ✅ Connect Phantom Wallet (Using Solana Web3.js)
+  // ✅ Force Wallet Approval Each Time
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
-        const response = await window.solana.connect();
+        // Force the wallet to request approval every time by not using cached connections
+        const response = await window.solana.connect({ onlyIfTrusted: false });
         setWalletAddress(response.publicKey.toString());
         console.log("Connected with Public Key:", response.publicKey.toString());
       } catch (err) {
@@ -21,10 +22,11 @@ export default function App() {
     }
   };
 
-  // ✅ Disconnect Wallet Function
+  // ✅ Full Disconnect (Clear Session)
   const disconnectWallet = () => {
-    window.solana?.disconnect();
-    setWalletAddress(null);
+    window.solana?.disconnect(); // Disconnect from Phantom
+    localStorage.removeItem("walletName"); // Clear local storage session
+    setWalletAddress(null); // Reset UI
   };
 
   // ✅ Claim Rewards Logic (Placeholder)
@@ -38,11 +40,11 @@ export default function App() {
 
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
-      {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS (INCREASED HEIGHT) */}
+      {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS (80px height) */}
       <div
         style={{
           width: "100%",
-          height: "80px",  /* Increased from 70px to 80px */
+          height: "80px",
           background: "black",
           display: "flex",
           justifyContent: "space-between",
@@ -107,8 +109,8 @@ export default function App() {
         </button>
       </div>
 
-      {/* 🔹 3D ROOM BELOW THE TOP BAR (ADJUSTED FOR NEW HEIGHT) */}
-      <div style={{ flex: 1, position: "relative", marginTop: "90px" }}>
+      {/* 🔹 3D ROOM BELOW THE TOP BAR (Adjusted for 80px Height) */}
+      <div style={{ flex: 1, position: "relative", marginTop: "80px" }}>
         <ThreeScene />
       </div>
     </div>
