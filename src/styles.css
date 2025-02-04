@@ -16,26 +16,21 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; /* Ensures 3D is in the background */
+  z-index: -1; /* Pushes the 3D scene to the background */
 }
 
-/* 🔹 Fixing the Black Top Bar (Can Be Transparent) */
-.top-bar {
-  width: 100%;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
+/* 🔹 Floating Buttons - No Background Bar */
+.top-buttons {
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10; /* Ensures it stays above the 3D scene */
-  transition: background 0.3s ease-in-out;
+  top: 10px; /* Slight margin from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10; /* Keeps them above the 3D scene */
 }
 
-/* Buttons - Keep Them on Top */
+/* Buttons - Floating on 3D Scene */
 .connect-button,
 .disconnect-button,
 .claim-button {
@@ -44,6 +39,7 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  opacity: 0.9; /* Slight transparency */
 }
 
 .connect-button {
@@ -57,10 +53,4 @@ body {
 
 .claim-button {
   background: lightgreen;
-}
-
-/* Wallet Address Text */
-.wallet-text {
-  color: white;
-  margin-bottom: 5px;
 }
