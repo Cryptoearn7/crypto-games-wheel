@@ -3,7 +3,7 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: black;
+  background: transparent; /* Ensure no background */
   color: white;
   text-align: center;
   overflow: hidden; /* Prevents unwanted scrolling */
@@ -16,18 +16,21 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; /* Pushes the 3D scene to the background */
+  z-index: -1; /* Keeps 3D scene behind everything */
 }
 
-/* 🔹 Floating Buttons - No Background Bar */
+/* 🔹 Floating Buttons - Ensures They Stay in Front */
 .top-buttons {
-  position: fixed;
-  top: 10px; /* Slight margin from the top */
+  position: absolute;
+  top: 10px; /* Aligns near the top */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
   z-index: 10; /* Keeps them above the 3D scene */
+  background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  padding: 8px;
+  border-radius: 12px;
 }
 
 /* Buttons - Floating on 3D Scene */
