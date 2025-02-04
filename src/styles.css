@@ -53,11 +53,11 @@ body {
   flex-grow: 1;
 }
 
-/* 🔹 Rewards Display (Now same color as Connect Wallet button) */
+/* 🔹 Rewards Display (Now same color and text size as other buttons) */
 .rewards-display {
-  font-size: 18px;
+  font-size: 16px; /* Match other buttons */
   font-weight: bold;
-  color: black; /* Text color remains black */
+  color: black; /* Text color same as buttons */
   background: lightblue; /* Match Connect Wallet button */
   padding: 10px 15px;
   border-radius: 8px;
