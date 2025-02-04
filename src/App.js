@@ -21,6 +21,12 @@ export default function App() {
     }
   };
 
+  // ✅ Disconnect Wallet Function
+  const disconnectWallet = () => {
+    window.solana?.disconnect();
+    setWalletAddress(null);
+  };
+
   // ✅ Claim Rewards Logic (Placeholder)
   const claimRewards = () => {
     if (!walletAddress) {
@@ -48,24 +54,43 @@ export default function App() {
           zIndex: 100,
         }}
       >
-        {/* ✅ Phantom Wallet Connect Button */}
-        {!walletAddress ? (
-          <button
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              background: "lightblue",
-              border: "none",
-              borderRadius: "10px",
-              cursor: "pointer",
-            }}
-            onClick={connectWallet}
-          >
-            Connect Wallet
-          </button>
-        ) : (
-          <p style={{ color: "white" }}>Connected: {walletAddress}</p>
-        )}
+        {/* ✅ Wallet Connection Handling */}
+        <div style={{ textAlign: "left" }}>
+          {!walletAddress ? (
+            <button
+              style={{
+                padding: "10px 20px",
+                fontSize: "16px",
+                background: "lightblue",
+                border: "none",
+                borderRadius: "10px",
+                cursor: "pointer",
+              }}
+              onClick={connectWallet}
+            >
+              Connect Wallet
+            </button>
+          ) : (
+            <div>
+              <p style={{ color: "white" }}>Connected: {walletAddress}</p>
+              <button
+                style={{
+                  marginTop: "5px",
+                  padding: "5px 15px",
+                  fontSize: "14px",
+                  background: "red",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                }}
+                onClick={disconnectWallet}
+              >
+                Disconnect
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* ✅ Claim Rewards Button */}
         <button
