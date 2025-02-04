@@ -3,34 +3,49 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: transparent; /* Ensures no white background */
+  background: lightblue; /* Light blue background */
   color: white;
   text-align: center;
-  overflow: hidden; /* Prevents scrolling */
+  overflow: hidden;
 }
 
-/* 🔹 Ensures Full-Screen 3D Scene */
+/* 🔹 Full-Screen 3D Scene */
 .three-container {
   width: 100vw;
-  height: 100vh; /* Full screen height */
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; /* Keeps 3D scene behind everything */
+  z-index: -1;
 }
 
-/* 🔹 Moving Buttons Inside the 3D Room */
-.ui-buttons {
-  position: absolute;
-  bottom: 10%; /* Moves buttons into the scene */
-  left: 50%;
-  transform: translateX(-50%);
+/* 🔹 Fixed Top Bar (For Buttons & Rewards) */
+.top-bar {
+  width: 100%;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
   display: flex;
-  gap: 10px;
-  z-index: 2; /* Ensures buttons stay in front of the 3D scene */
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
 }
 
-/* Buttons */
+/* 🔹 Rewards Display */
+.rewards-display {
+  font-size: 18px;
+  font-weight: bold;
+  color: yellow;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* 🔹 Buttons */
 .connect-button,
 .disconnect-button,
 .claim-button {
