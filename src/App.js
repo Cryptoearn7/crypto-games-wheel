@@ -80,7 +80,7 @@ export default function App() {
   };
 
     return (
-    <div className="app">
+     <div className="app">
       {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS (80px height) */}
       <div className="top-bar">
         {/* ✅ Wallet Connection Handling */}
@@ -142,3 +142,4 @@ export default function App() {
       </div>
     </div>
   );
+}
