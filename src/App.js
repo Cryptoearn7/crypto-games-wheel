@@ -38,11 +38,11 @@ export default function App() {
 
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
-      {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS */}
+      {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS (INCREASED HEIGHT) */}
       <div
         style={{
           width: "100%",
-          height: "70px",
+          height: "80px",  /* Increased from 70px to 80px */
           background: "black",
           display: "flex",
           justifyContent: "space-between",
@@ -72,10 +72,9 @@ export default function App() {
             </button>
           ) : (
             <div>
-              <p style={{ color: "white" }}>Connected: {walletAddress}</p>
+              <p style={{ color: "white", marginBottom: "5px" }}>Connected: {walletAddress}</p>
               <button
                 style={{
-                  marginTop: "5px",
                   padding: "5px 15px",
                   fontSize: "14px",
                   background: "red",
@@ -108,8 +107,8 @@ export default function App() {
         </button>
       </div>
 
-      {/* 🔹 3D ROOM BELOW THE TOP BAR */}
-      <div style={{ flex: 1, position: "relative" }}>
+      {/* 🔹 3D ROOM BELOW THE TOP BAR (ADJUSTED FOR NEW HEIGHT) */}
+      <div style={{ flex: 1, position: "relative", marginTop: "90px" }}>
         <ThreeScene />
       </div>
     </div>
