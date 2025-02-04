@@ -6,11 +6,19 @@ import "./styles.css";
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
 
+  useEffect(() => {
+    // Ensure the wallet does not auto-reconnect
+    if (window.solana?.isConnected) {
+      setWalletAddress(window.solana.publicKey.toString());
+    }
+  }, []);
+
   // ✅ Ensure Wallet Approval Every Time
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
-        // Force fresh approval by ensuring session is not remembered
+        await disconnectWallet(); // Force logout before connecting
+
         const response = await window.solana.connect({ onlyIfTrusted: false });
         setWalletAddress(response.publicKey.toString());
         console.log("Connected with Public Key:", response.publicKey.toString());
@@ -29,11 +37,19 @@ export default function App() {
         await window.solana.disconnect(); // Force Phantom to disconnect
       }
 
-      // Manually clear the stored wallet session
-      setWalletAddress(null); // Forget wallet in React state
-      window.solana._wallet = null; // Reset Phantom session
-      window.solana._publicKey = null; // Forget public key
-      console.log("Wallet fully disconnected, public key forgotten");
+      // Completely clear stored session data
+      localStorage.clear();
+      sessionStorage.clear();
+
+      // Reset the Phantom connection
+      if (window.solana) {
+        window.solana._wallet = null;
+        window.solana._publicKey = null;
+        window.solana.isConnected = false;
+      }
+
+      setWalletAddress(null);
+      console.log("Wallet fully disconnected, session cleared.");
     } catch (err) {
       console.error("Error disconnecting wallet:", err);
     }
