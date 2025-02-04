@@ -19,7 +19,7 @@ body {
   z-index: -1;
 }
 
-/* 🔹 Fixed Top Bar (For Buttons & Rewards) */
+/* 🔹 Fixed Top Bar */
 .top-bar {
   width: 100%;
   height: 80px;
@@ -35,21 +35,23 @@ body {
   backdrop-filter: blur(8px);
 }
 
-/* 🔹 Left Section (Wallet Connection) */
+/* 🔹 Centered Middle Section */
+.center-section {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* 🔹 Wallet Section (Left) */
 .wallet-section {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* 🔹 Rewards & Claim Button Group */
-.rewards-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* 🔹 Rewards Display */
+/* 🔹 Rewards Section */
 .rewards-display {
   font-size: 18px;
   font-weight: bold;
