@@ -23,7 +23,7 @@ h1 {
 canvas {
   display: block;
   position: absolute;
-  top: 70px; /* Pushes below the navbar */
+  top: 80px; /* Pushes below the navbar */
   left: 0;
   width: 100vw;
   height: calc(100vh - 70px); /* Fills the screen except for the navbar */
