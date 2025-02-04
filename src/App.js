@@ -6,12 +6,12 @@ import "./styles.css";
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
 
-  // ✅ Force Wallet Approval Every Time by Resetting Connection
+  // ✅ Force Wallet Approval Every Time
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
         // Disconnect first to remove session cache (Force Fresh Login)
-        await window.solana.disconnect();
+        await disconnectWallet();
 
         // Now request new connection (forces approval)
         const response = await window.solana.connect({ onlyIfTrusted: false });
@@ -25,12 +25,17 @@ export default function App() {
     }
   };
 
-  // ✅ Full Disconnect (Clears All Session Data)
+  // ✅ Full Disconnect (Ensures Phantom fully resets session)
   const disconnectWallet = async () => {
     try {
-      await window.solana.disconnect(); // Disconnect Phantom session
-      localStorage.clear(); // Clear any cached wallet data
-      sessionStorage.clear(); // Extra security: clear session storage
+      if (window.solana?.isPhantom) {
+        await window.solana.disconnect(); // Force disconnect
+      }
+
+      // Manually clear stored wallet sessions
+      localStorage.removeItem("walletName");
+      localStorage.removeItem("solana_wallet_adapter");
+      sessionStorage.clear(); // Extra security
       setWalletAddress(null);
       console.log("Wallet fully disconnected");
     } catch (err) {
