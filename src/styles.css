@@ -40,7 +40,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 180px; /* Ensures fixed width so buttons don’t shift */
+  width: 180px;
   justify-content: flex-start;
 }
 
@@ -53,14 +53,16 @@ body {
   flex-grow: 1;
 }
 
-/* 🔹 Rewards Display */
+/* 🔹 Rewards Display (Now only shows number & styled like buttons) */
 .rewards-display {
   font-size: 18px;
   font-weight: bold;
-  color: yellow;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 10px;
+  color: black; /* Match button text */
+  background: white; /* Match button style */
+  padding: 10px 15px;
   border-radius: 8px;
+  min-width: 80px; /* Prevent shrinking */
+  text-align: center;
 }
 
 /* 🔹 Buttons */
