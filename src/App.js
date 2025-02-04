@@ -4,6 +4,7 @@ import "./styles.css";
 
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
+  const [totalRewards, setTotalRewards] = useState(0); // ✅ Track rewards
 
   // ✅ Detect Wallet Connection State Automatically
   useEffect(() => {
@@ -63,34 +64,44 @@ export default function App() {
       alert("Connect your wallet first!");
       return;
     }
-    alert(`Claiming your rewards...`);
+    alert(`Claiming your rewards: ${totalRewards} CRG`);
+    setTotalRewards(0); // Reset rewards after claiming
   };
 
   return (
     <div className="app">
-      {/* 🔹 FULL-SCREEN 3D SCENE */}
-      <div className="three-container">
-        <ThreeScene />
-      </div>
-
-      {/* 🔹 UI BUTTONS (Inside the 3D Room) */}
-      <div className="ui-buttons">
-        {!walletAddress ? (
-          <button className="connect-button" onClick={connectWallet}>
-            Connect Wallet
-          </button>
-        ) : (
-          <>
-            <button className="disconnect-button" onClick={disconnectWallet}>
-              Disconnect
+      {/* 🔹 Fixed Top Bar */}
+      <div className="top-bar">
+        {/* ✅ Wallet Connection Buttons */}
+        <div>
+          {!walletAddress ? (
+            <button className="connect-button" onClick={connectWallet}>
+              Connect Wallet
             </button>
-            <p className="wallet-text">Connected: {walletAddress}</p>
-          </>
-        )}
+          ) : (
+            <>
+              <button className="disconnect-button" onClick={disconnectWallet}>
+                Disconnect
+              </button>
+              <p className="wallet-text">Connected: {walletAddress}</p>
+            </>
+          )}
+        </div>
 
+        {/* ✅ Rewards Display */}
+        <div className="rewards-display">
+          Total Rewards: {totalRewards} CRG
+        </div>
+
+        {/* ✅ Claim Rewards Button */}
         <button className="claim-button" onClick={claimRewards}>
           Claim Rewards
         </button>
+      </div>
+
+      {/* 🔹 Full-Screen 3D Scene */}
+      <div className="three-container">
+        <ThreeScene />
       </div>
     </div>
   );
