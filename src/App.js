@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 import ThreeScene from "./components/ThreeScene"; // Ensure correct path
 import "./styles.css";
@@ -6,11 +6,14 @@ import "./styles.css";
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
 
-  // ✅ Force Wallet Approval Each Time
+  // ✅ Force Wallet Approval Every Time by Resetting Connection
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
-        // Force the wallet to request approval every time by not using cached connections
+        // Disconnect first to remove session cache (Force Fresh Login)
+        await window.solana.disconnect();
+
+        // Now request new connection (forces approval)
         const response = await window.solana.connect({ onlyIfTrusted: false });
         setWalletAddress(response.publicKey.toString());
         console.log("Connected with Public Key:", response.publicKey.toString());
@@ -22,11 +25,17 @@ export default function App() {
     }
   };
 
-  // ✅ Full Disconnect (Clear Session)
-  const disconnectWallet = () => {
-    window.solana?.disconnect(); // Disconnect from Phantom
-    localStorage.removeItem("walletName"); // Clear local storage session
-    setWalletAddress(null); // Reset UI
+  // ✅ Full Disconnect (Clears All Session Data)
+  const disconnectWallet = async () => {
+    try {
+      await window.solana.disconnect(); // Disconnect Phantom session
+      localStorage.clear(); // Clear any cached wallet data
+      sessionStorage.clear(); // Extra security: clear session storage
+      setWalletAddress(null);
+      console.log("Wallet fully disconnected");
+    } catch (err) {
+      console.error("Error disconnecting wallet:", err);
+    }
   };
 
   // ✅ Claim Rewards Logic (Placeholder)
