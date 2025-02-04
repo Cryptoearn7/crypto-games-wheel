@@ -72,31 +72,29 @@ export default function App() {
     <div className="app">
       {/* 🔹 Fixed Top Bar */}
       <div className="top-bar">
-        {/* ✅ Wallet Connection Buttons */}
-        <div>
+        {/* ✅ Wallet Section */}
+        <div className="wallet-section">
           {!walletAddress ? (
             <button className="connect-button" onClick={connectWallet}>
               Connect Wallet
             </button>
           ) : (
             <>
+              <p className="wallet-text">Connected: {walletAddress}</p>
               <button className="disconnect-button" onClick={disconnectWallet}>
                 Disconnect
               </button>
-              <p className="wallet-text">Connected: {walletAddress}</p>
             </>
           )}
         </div>
 
-        {/* ✅ Rewards Display */}
-        <div className="rewards-display">
-          Total Rewards: {totalRewards} CRG
+        {/* ✅ Rewards Section (Now closer to Claim Button) */}
+        <div className="rewards-section">
+          <div className="rewards-display">Total Rewards: {totalRewards} CRG</div>
+          <button className="claim-button" onClick={claimRewards}>
+            Claim Rewards
+          </button>
         </div>
-
-        {/* ✅ Claim Rewards Button */}
-        <button className="claim-button" onClick={claimRewards}>
-          Claim Rewards
-        </button>
       </div>
 
       {/* 🔹 Full-Screen 3D Scene */}
