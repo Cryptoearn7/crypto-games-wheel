@@ -10,7 +10,7 @@ export default function App() {
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
-        await disconnectWallet(); // First, force a disconnect before reconnecting
+        // Force fresh approval by ensuring session is not remembered
         const response = await window.solana.connect({ onlyIfTrusted: false });
         setWalletAddress(response.publicKey.toString());
         console.log("Connected with Public Key:", response.publicKey.toString());
@@ -22,24 +22,18 @@ export default function App() {
     }
   };
 
-  // ✅ Fully Disconnect Wallet and Reset Session
+  // ✅ Fully Disconnect Wallet and Forget the Session
   const disconnectWallet = async () => {
     try {
       if (window.solana?.isPhantom) {
         await window.solana.disconnect(); // Force Phantom to disconnect
       }
 
-      // Manually clear Phantom’s stored session
-      localStorage.removeItem("walletName");
-      localStorage.removeItem("solana_wallet_adapter");
-      sessionStorage.clear(); // Extra security to clear browser session data
-      setWalletAddress(null);
-      console.log("Wallet fully disconnected");
-
-      // ✅ Force page reload to fully reset Phantom's connection cache
-      setTimeout(() => {
-        window.location.reload();
-      }, 500); // Small delay to ensure all sessions clear
+      // Manually clear the stored wallet session
+      setWalletAddress(null); // Forget wallet in React state
+      window.solana._wallet = null; // Reset Phantom session
+      window.solana._publicKey = null; // Forget public key
+      console.log("Wallet fully disconnected, public key forgotten");
     } catch (err) {
       console.error("Error disconnecting wallet:", err);
     }
