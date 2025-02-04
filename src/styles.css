@@ -3,36 +3,21 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #1a1a40, #4a4a72);
+  background: black; /* Set background to black to match the top bar */
   color: white;
   text-align: center;
-  overflow: hidden; /* Prevents scrolling */
+  overflow: hidden; /* Prevents scrolling issues */
 }
 
 .app {
-  padding: 20px;
+  padding: 0;
+  margin: 0;
 }
 
-h1 {
-  font-size: 2.5rem;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-  margin-bottom: 30px;
-}
-
-/* 🔹 Fixes duplicate or misaligned canvas rendering */
-canvas {
-  display: block;
-  position: absolute;
-  top: 80px; /* Pushes below the navbar */
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 70px); /* Fills the screen except for the navbar */
-}
-
-/* 🔹 Top Bar Styles */
+/* 🔹 Fixing the Black Top Bar */
 .top-bar {
   width: 100%;
-  height: 70px;
+  height: 80px;
   background: black;
   display: flex;
   justify-content: space-between;
@@ -44,112 +29,22 @@ canvas {
   z-index: 100;
 }
 
-/* Buttons Container */
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-/* Connect Wallet Button */
-.connect-wallet {
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  background-color: #ffcc00;
-  color: black;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(255, 204, 0, 0.6);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.connect-wallet:hover {
-  background-color: #ff9900;
-  transform: scale(1.05);
-}
-
-/* Claim Rewards Button */
-.claim-button {
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  background-color: #00cc66;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 204, 102, 0.6);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.claim-button:hover {
-  background-color: #00994d;
-  transform: scale(1.05);
-}
-
-.claim-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-/* 🔹 Spin Button Positioned Correctly */
-.spin-button-container {
+/* 🔹 3D Scene Adjustment - Removes Extra Space */
+.three-container {
+  width: 100vw;
+  height: calc(100vh - 80px); /* Ensures the 3D scene perfectly fills the screen */
   position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
-.spin-button-container button {
-  padding: 15px 30px;
-  font-size: 18px;
-  background: yellow;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(255, 204, 0, 0.6);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.spin-button-container button:hover {
-  background-color: #ff9900;
-  transform: scale(1.05);
-}
-
-/* 🔹 Wheel Container */
-.wheel-container {
-  margin: 30px auto;
-  position: relative;
-  width: 300px; /* Diameter of the wheel */
-  height: 300px; /* Diameter of the wheel */
-}
-
-/* 🔹 Wheel Styling */
-.wheel {
-  width: 100%;
-  height: 100%;
-  border: 6px solid #ffcc00;
-  border-radius: 50%;
-  position: relative;
+  top: 80px; /* Aligns the 3D scene directly under the black bar */
+  left: 0;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(255, 204, 0, 0.7);
-  animation: none;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(3600deg);
-  }
-}
-
-/* 🔹 Reward Display */
-.reward {
-  font-size: 1.5rem;
-  margin-top: 20px;
-  color: #ffcc00;
+/* Ensures Canvas Takes Full Width */
+canvas {
+  width: 100vw;
+  height: calc(100vh - 80px); /* Same as .three-container to ensure full screen */
+  display: block;
+  position: absolute;
+  top: 80px;
+  left: 0;
 }
