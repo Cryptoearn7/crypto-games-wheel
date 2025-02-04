@@ -54,10 +54,7 @@ export default function App() {
       if (window.solana?.isPhantom) {
         await window.solana.disconnect(); // Force disconnect from Phantom
       }
-
-      // Ensure session is cleared
       setWalletAddress(null);
-
       console.log("Wallet fully disconnected. App should be removed from Phantom.");
 
       // ✅ Listen for Phantom's response & confirm removal
@@ -79,41 +76,20 @@ export default function App() {
     alert(`Claiming your rewards...`);
   };
 
-    return (
-     <div className="app">
+  return (
+    <div className="app">
       {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS (80px height) */}
       <div className="top-bar">
         {/* ✅ Wallet Connection Handling */}
         <div style={{ textAlign: "left" }}>
           {!walletAddress ? (
-            <button
-              style={{
-                padding: "10px 20px",
-                fontSize: "16px",
-                background: "lightblue",
-                border: "none",
-                borderRadius: "10px",
-                cursor: "pointer",
-              }}
-              onClick={connectWallet}
-            >
+            <button className="connect-button" onClick={connectWallet}>
               Connect Wallet
             </button>
           ) : (
             <div>
-              <p style={{ color: "white", marginBottom: "5px" }}>Connected: {walletAddress}</p>
-              <button
-                style={{
-                  padding: "5px 15px",
-                  fontSize: "14px",
-                  background: "red",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                }}
-                onClick={disconnectWallet}
-              >
+              <p className="wallet-text">Connected: {walletAddress}</p>
+              <button className="disconnect-button" onClick={disconnectWallet}>
                 Disconnect
               </button>
             </div>
@@ -121,17 +97,7 @@ export default function App() {
         </div>
 
         {/* ✅ Claim Rewards Button */}
-        <button
-          style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            background: "lightgreen",
-            border: "none",
-            borderRadius: "10px",
-            cursor: "pointer",
-          }}
-          onClick={claimRewards}
-        >
+        <button className="claim-button" onClick={claimRewards}>
           Claim Rewards
         </button>
       </div>
