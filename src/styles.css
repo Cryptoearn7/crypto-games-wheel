@@ -3,36 +3,31 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: black;
+  background: transparent;
   color: white;
   text-align: center;
-  overflow: hidden;
+  overflow: hidden; /* Prevents scrolling */
 }
 
 /* 🔹 Ensures Full-Screen 3D Scene */
 .three-container {
   width: 100vw;
-  height: 100vh;
+  height: 100vh; /* Full screen height */
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1; /* Keeps 3D scene behind everything */
 }
 
-/* 🔹 Transparent Top Bar */
-.top-bar {
-  width: 100%;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+/* 🔹 Floating Buttons (No Background Bar) */
+.top-buttons {
+  position: absolute;
+  top: 10px; /* Keep it near the top */
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10; /* Keeps it above the 3D scene */
-  backdrop-filter: blur(8px); /* Adds a nice blur effect */
+  gap: 10px;
+  z-index: 10; /* Ensures buttons stay above 3D scene */
 }
 
 /* Buttons */
@@ -58,10 +53,4 @@ body {
 
 .claim-button {
   background: lightgreen;
-}
-
-/* Wallet Address Text */
-.wallet-text {
-  color: white;
-  margin-bottom: 5px;
 }
