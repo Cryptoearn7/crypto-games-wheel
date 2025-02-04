@@ -8,19 +8,16 @@ export default function App() {
   // ✅ Detect Wallet Connection State Automatically
   useEffect(() => {
     if (window.solana && window.solana.isPhantom) {
-      // Listen for connect event
       window.solana.on("connect", () => {
         setWalletAddress(window.solana.publicKey.toString());
         console.log("Wallet Connected:", window.solana.publicKey.toString());
       });
 
-      // Listen for disconnect event
       window.solana.on("disconnect", () => {
         setWalletAddress(null);
         console.log("Wallet Disconnected");
       });
 
-      // Check if already connected
       (async () => {
         try {
           const response = await window.solana.connect({ onlyIfTrusted: true });
@@ -71,7 +68,6 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* Floating buttons (now without background bar) */}
       <div className="top-buttons">
         {!walletAddress ? (
           <button className="connect-button" onClick={connectWallet}>
@@ -91,7 +87,6 @@ export default function App() {
         </button>
       </div>
 
-      {/* Full-Screen 3D Scene */}
       <div className="three-container">
         <ThreeScene />
       </div>
