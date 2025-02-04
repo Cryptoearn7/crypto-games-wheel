@@ -72,7 +72,7 @@ export default function App() {
     <div className="app">
       {/* 🔹 Fixed Top Bar */}
       <div className="top-bar">
-        {/* ✅ Wallet Section */}
+        {/* ✅ Wallet Section (Left) */}
         <div className="wallet-section">
           {!walletAddress ? (
             <button className="connect-button" onClick={connectWallet}>
@@ -88,13 +88,20 @@ export default function App() {
           )}
         </div>
 
-        {/* ✅ Rewards Section (Now closer to Claim Button) */}
-        <div className="rewards-section">
+        {/* ✅ Center Section (Rewards + Connect Button) */}
+        <div className="center-section">
           <div className="rewards-display">Total Rewards: {totalRewards} CRG</div>
-          <button className="claim-button" onClick={claimRewards}>
-            Claim Rewards
-          </button>
+          {!walletAddress && (
+            <button className="connect-button" onClick={connectWallet}>
+              Connect Wallet
+            </button>
+          )}
         </div>
+
+        {/* ✅ Claim Button (Right Side) */}
+        <button className="claim-button" onClick={claimRewards}>
+          Claim Rewards
+        </button>
       </div>
 
       {/* 🔹 Full-Screen 3D Scene */}
