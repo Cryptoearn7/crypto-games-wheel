@@ -68,8 +68,13 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* 🔹 FLOATING BUTTONS */}
-      <div className="top-buttons">
+      {/* 🔹 FULL-SCREEN 3D SCENE */}
+      <div className="three-container">
+        <ThreeScene />
+      </div>
+
+      {/* 🔹 UI BUTTONS (Inside the 3D Room) */}
+      <div className="ui-buttons">
         {!walletAddress ? (
           <button className="connect-button" onClick={connectWallet}>
             Connect Wallet
@@ -86,11 +91,6 @@ export default function App() {
         <button className="claim-button" onClick={claimRewards}>
           Claim Rewards
         </button>
-      </div>
-
-      {/* 🔹 FULL-SCREEN 3D SCENE */}
-      <div className="three-container">
-        <ThreeScene />
       </div>
     </div>
   );
