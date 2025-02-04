@@ -7,19 +7,19 @@ export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
 
   useEffect(() => {
-    // Ensure the wallet does not auto-reconnect
+    // Ensure wallet does not auto-reconnect
     if (window.solana?.isConnected) {
       setWalletAddress(window.solana.publicKey.toString());
     }
   }, []);
 
-  // ✅ Ensure Wallet Approval Every Time
+  // ✅ Force Wallet Approval Every Time
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
-        await disconnectWallet(); // Force logout before connecting
+        await disconnectWallet(); // First, force a disconnect before connecting
 
-        const response = await window.solana.connect({ onlyIfTrusted: false });
+        const response = await window.solana.connect();
         setWalletAddress(response.publicKey.toString());
         console.log("Connected with Public Key:", response.publicKey.toString());
       } catch (err) {
@@ -34,22 +34,28 @@ export default function App() {
   const disconnectWallet = async () => {
     try {
       if (window.solana?.isPhantom) {
-        await window.solana.disconnect(); // Force Phantom to disconnect
+        await window.solana.disconnect(); // Disconnect wallet
       }
 
-      // Completely clear stored session data
-      localStorage.clear();
+      // Clear any stored wallet data
+      localStorage.removeItem("walletName");
+      localStorage.removeItem("solana_wallet_adapter");
       sessionStorage.clear();
 
-      // Reset the Phantom connection
-      if (window.solana) {
-        window.solana._wallet = null;
-        window.solana._publicKey = null;
-        window.solana.isConnected = false;
-      }
+      // Manually reset Phantom state
+      window.solana._wallet = null;
+      window.solana._publicKey = null;
+      window.solana.isConnected = false;
 
       setWalletAddress(null);
-      console.log("Wallet fully disconnected, session cleared.");
+      console.log("Wallet fully disconnected.");
+
+      // Force Phantom UI to reset connection
+      window.solana.on("disconnect", () => {
+        console.log("Phantom has been fully disconnected.");
+        setWalletAddress(null);
+      });
+
     } catch (err) {
       console.error("Error disconnecting wallet:", err);
     }
