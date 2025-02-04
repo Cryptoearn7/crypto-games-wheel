@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 import ThreeScene from "./components/ThreeScene"; // Ensure correct path
 import "./styles.css";
 
@@ -48,20 +47,14 @@ export default function App() {
     }
   };
 
-  // ✅ Disconnect Wallet & Remove App Connection from Phantom
+  // ✅ Disconnect Wallet
   const disconnectWallet = async () => {
     try {
       if (window.solana?.isPhantom) {
-        await window.solana.disconnect(); // Force disconnect from Phantom
+        await window.solana.disconnect();
       }
       setWalletAddress(null);
-      console.log("Wallet fully disconnected. App should be removed from Phantom.");
-
-      // ✅ Listen for Phantom's response & confirm removal
-      window.solana.on("disconnect", () => {
-        console.log("Phantom confirmed app removal.");
-        setWalletAddress(null);
-      });
+      console.log("Wallet fully disconnected.");
     } catch (err) {
       console.error("Error disconnecting wallet:", err);
     }
@@ -78,7 +71,7 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* 🔹 FIXED TOP BAR WITH FUNCTIONAL BUTTONS (80px height) */}
+      {/* 🔹 FIXED TOP BAR (Now Transparent) */}
       <div className="top-bar">
         {/* ✅ Wallet Connection Handling */}
         <div style={{ textAlign: "left" }}>
@@ -102,7 +95,7 @@ export default function App() {
         </button>
       </div>
 
-      {/* 🔹 3D ROOM BELOW THE TOP BAR (Flush with Black Bar) */}
+      {/* 🔹 FULL-SCREEN 3D SCENE */}
       <div className="three-container">
         <ThreeScene />
       </div>
