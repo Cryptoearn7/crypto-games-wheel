@@ -3,7 +3,7 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: transparent;
+  background: transparent; /* Ensures no white background */
   color: white;
   text-align: center;
   overflow: hidden; /* Prevents scrolling */
@@ -19,15 +19,15 @@ body {
   z-index: -1; /* Keeps 3D scene behind everything */
 }
 
-/* 🔹 Floating Buttons (No Background Bar) */
-.top-buttons {
+/* 🔹 Moving Buttons Inside the 3D Room */
+.ui-buttons {
   position: absolute;
-  top: 10px; /* Keep it near the top */
+  bottom: 10%; /* Moves buttons into the scene */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  z-index: 10; /* Ensures buttons stay above 3D scene */
+  z-index: 2; /* Ensures buttons stay in front of the 3D scene */
 }
 
 /* Buttons */
