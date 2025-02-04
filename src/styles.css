@@ -3,37 +3,37 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: transparent; /* Ensure no background */
+  background: transparent;
   color: white;
   text-align: center;
-  overflow: hidden; /* Prevents unwanted scrolling */
+  overflow: hidden;
 }
 
 /* 🔹 Ensures Full-Screen 3D Scene */
 .three-container {
   width: 100vw;
-  height: 100vh; /* Full screen height */
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; /* Keeps 3D scene behind everything */
+  z-index: -1;
 }
 
-/* 🔹 Floating Buttons - Ensures They Stay in Front */
+/* 🔹 Floating Buttons - Keeps Them Visible */
 .top-buttons {
   position: absolute;
-  top: 10px; /* Aligns near the top */
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  z-index: 10; /* Keeps them above the 3D scene */
-  background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3);
   padding: 8px;
   border-radius: 12px;
 }
 
-/* Buttons - Floating on 3D Scene */
+/* Buttons */
 .connect-button,
 .disconnect-button,
 .claim-button {
@@ -42,7 +42,7 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  opacity: 0.9; /* Slight transparency */
+  opacity: 0.9;
 }
 
 .connect-button {
