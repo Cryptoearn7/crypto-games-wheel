@@ -35,6 +35,20 @@ body {
   backdrop-filter: blur(8px);
 }
 
+/* 🔹 Left Section (Wallet Connection) */
+.wallet-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 🔹 Rewards & Claim Button Group */
+.rewards-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 /* 🔹 Rewards Display */
 .rewards-display {
   font-size: 18px;
@@ -49,7 +63,7 @@ body {
 .connect-button,
 .disconnect-button,
 .claim-button {
-  padding: 10px 20px;
+  padding: 10px 15px;
   font-size: 16px;
   border: none;
   border-radius: 10px;
