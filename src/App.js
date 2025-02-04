@@ -71,9 +71,8 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* 🔹 FLOATING BUTTONS (No Background Bar) */}
+      {/* Floating buttons (now without background bar) */}
       <div className="top-buttons">
-        {/* ✅ Wallet Connection Handling */}
         {!walletAddress ? (
           <button className="connect-button" onClick={connectWallet}>
             Connect Wallet
@@ -87,13 +86,12 @@ export default function App() {
           </>
         )}
 
-        {/* ✅ Claim Rewards Button */}
         <button className="claim-button" onClick={claimRewards}>
           Claim Rewards
         </button>
       </div>
 
-      {/* 🔹 FULL-SCREEN 3D SCENE */}
+      {/* Full-Screen 3D Scene */}
       <div className="three-container">
         <ThreeScene />
       </div>
