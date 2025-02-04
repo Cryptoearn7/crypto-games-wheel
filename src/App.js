@@ -71,23 +71,21 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* 🔹 FIXED TOP BAR (Now Transparent) */}
-      <div className="top-bar">
+      {/* 🔹 FLOATING BUTTONS (No Background Bar) */}
+      <div className="top-buttons">
         {/* ✅ Wallet Connection Handling */}
-        <div style={{ textAlign: "left" }}>
-          {!walletAddress ? (
-            <button className="connect-button" onClick={connectWallet}>
-              Connect Wallet
+        {!walletAddress ? (
+          <button className="connect-button" onClick={connectWallet}>
+            Connect Wallet
+          </button>
+        ) : (
+          <>
+            <button className="disconnect-button" onClick={disconnectWallet}>
+              Disconnect
             </button>
-          ) : (
-            <div>
-              <p className="wallet-text">Connected: {walletAddress}</p>
-              <button className="disconnect-button" onClick={disconnectWallet}>
-                Disconnect
-              </button>
-            </div>
-          )}
-        </div>
+            <p className="wallet-text">Connected: {walletAddress}</p>
+          </>
+        )}
 
         {/* ✅ Claim Rewards Button */}
         <button className="claim-button" onClick={claimRewards}>
