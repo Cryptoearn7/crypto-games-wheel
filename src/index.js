@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage"; // ✅ Corrected path
 import App from "./App";
-import "./styles.css"; // ✅ Ensure styles are imported correctly
+import "./styles.css";  // ✅ Correct relative path
 
 ReactDOM.render(
   <React.StrictMode>
