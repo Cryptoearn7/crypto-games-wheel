@@ -1,3 +1,14 @@
+/* 🔹 GENERAL STYLES */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: lightblue;
+  color: black;
+  text-align: center;
+  overflow-x: hidden;
+}
+
 /* 🔹 ANIMATED BACKGROUND */
 .animated-bg {
   position: fixed;
@@ -15,7 +26,76 @@
   to { filter: brightness(1.2); }
 }
 
-/* 🔹 CODE BREAKER GAME */
+/* 🔹 HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* 🔹 HERO SECTION */
+.hero {
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+}
+
+.enter-button {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  background-color: #ffcc00;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.enter-button:hover {
+  background-color: #ff9900;
+  transform: scale(1.05);
+}
+
+/* 🔹 GAME SHOWCASE */
+.games-showcase {
+  padding: 50px;
+}
+
+.game-card {
+  background: white;
+  display: inline-block;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔹 CODE BREAKER GAME LAYOUT */
 .code-breaker-layout {
   display: flex;
   justify-content: space-between;
@@ -44,6 +124,7 @@
   border-radius: 8px;
   display: inline-block;
   margin: 15px 0;
+  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.8);
 }
 
 /* 🔹 Virtual Keypad */
@@ -52,6 +133,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-top: 20px;
+  justify-content: center;
 }
 
 .keypad button {
@@ -61,10 +143,12 @@
   border: none;
   cursor: pointer;
   background: #ffcc00;
+  transition: transform 0.2s ease-in-out;
 }
 
 .keypad button:hover {
   background: #ff9900;
+  transform: scale(1.1);
 }
 
 .backspace {
@@ -77,15 +161,28 @@
   color: white;
 }
 
-/* 🔹 Guessed Numbers Section */
+/* 🔹 Guessed Numbers Section (Right Side) */
 .guessed-numbers-container {
   width: 30%;
   background: rgba(255, 0, 0, 0.1);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
   max-height: 500px;
   overflow-y: auto;
+}
+
+.guessed-numbers-container h3 {
+  color: red;
+  font-size: 1.2rem;
+}
+
+/* 🔹 Individual Guessed Numbers */
+.number-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .guessed-number {
@@ -96,4 +193,19 @@
   font-weight: bold;
   text-align: center;
   width: 100px;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+  transform: scale(1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🔹 FOOTER */
+.footer {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
 }
