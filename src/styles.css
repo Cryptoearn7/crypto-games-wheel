@@ -56,47 +56,11 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(255, 204, 0, 0.6);
 }
 
 .enter-button:hover {
   background-color: #ff9900;
   transform: scale(1.05);
-}
-
-/* 🔹 FEATURES SECTION */
-.features {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 40px;
-}
-
-.feature {
-  width: 250px;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-/* 🔹 HOW IT WORKS */
-.how-it-works {
-  padding: 50px;
-}
-
-.steps {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.step {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* 🔹 GAME SHOWCASE */
@@ -113,15 +77,31 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* 🔹 CODE BREAKER STYLING */
+.code-breaker-container {
+  text-align: center;
+  padding: 50px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+.code-input {
+  padding: 10px;
+  font-size: 18px;
+  width: 60%;
+  text-align: center;
+  margin: 10px 0;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
 /* 🔹 FOOTER */
 .footer {
   background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 20px;
-}
-
-.footer a {
-  color: lightblue;
-  margin: 0 5px;
-  text-decoration: none;
 }
