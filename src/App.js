@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ThreeScene from "./components/ThreeScene";
-import "../styles.css"; // ✅ Use correct path
+import "./styles.css"; // ✅ Corrected import (relative path inside `src/`)
 
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
