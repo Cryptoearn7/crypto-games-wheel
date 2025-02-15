@@ -77,18 +77,25 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 🔹 CODE BREAKER STYLING */
-.code-breaker-container {
-  text-align: center;
+/* 🔹 CODE BREAKER LAYOUT (Main Game + Guessed Numbers Side Section) */
+.code-breaker-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   padding: 50px;
+}
+
+/* 🔹 Main Code Breaker Game Section */
+.code-breaker-container {
+  width: 60%;
+  text-align: center;
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  max-width: 500px;
-  margin: 50px auto;
+  padding: 50px;
 }
 
+/* 🔹 Input Field */
 .code-input {
   padding: 10px;
   font-size: 18px;
@@ -97,6 +104,55 @@ body {
   margin: 10px 0;
   border: 2px solid black;
   border-radius: 5px;
+}
+
+/* 🔹 Guess Button */
+.guess-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #ffcc00;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.guess-button:hover {
+  background-color: #ff9900;
+}
+
+/* 🔹 Guessed Numbers Section (Right Side) */
+.guessed-numbers-container {
+  width: 30%;
+  background: rgba(255, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.guessed-numbers-container h3 {
+  color: red;
+  font-size: 1.2rem;
+}
+
+/* 🔹 Individual Guessed Numbers */
+.number-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.guessed-number {
+  background: red;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  width: 100px;
 }
 
 /* 🔹 FOOTER */
