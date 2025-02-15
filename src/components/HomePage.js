@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import "./styles.css"; // ✅ Corrected import (relative path inside `src/`)
+import "../styles.css";  // ✅ Correct relative path
 
 export default function HomePage() {
   return (
