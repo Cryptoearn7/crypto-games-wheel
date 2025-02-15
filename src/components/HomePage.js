@@ -1,49 +1,45 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import "../styles.css";
+import "./styles.css";
 
 export default function HomePage() {
   return (
     <div className="homepage">
-      {/* 🔹 HEADER (LOGO + NAVIGATION) */}
-      <header className="header">
-        <div className="logo">Crypto Games</div>
-        <nav className="nav">
-          <a href="#">Home</a>
-          <a href="#">Games</a>
-          <a href="#">How It Works</a>
-          <a href="#">FAQ</a>
-        </nav>
-      </header>
+      {/* 🔹 Animated Background */}
+      <div className="animated-bg"></div>
 
-      {/* 🔹 HERO SECTION */}
-      <section className="hero">
-        <h1>Crypto Games – Play & Earn!</h1>
-        <p>Win CRG, USDT, and More with Our Fun Games</p>
-        <Link to="/game">
-          <button className="enter-button">Enter the App</button>
-        </Link>
-      </section>
+      {/* 🔹 Crypto Arcade Header */}
+      <motion.h1 
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="arcade-title"
+      >
+        Welcome to the <span className="neon-text">Crypto Arcade</span>
+      </motion.h1>
 
-      {/* 🔹 GAMES SHOWCASE */}
-      <section className="games-showcase">
-        <h2>Our Games</h2>
-        <div className="game-card">🎡 Wheel of Fortune</div>
-        <Link to="/code-breaker">
-          <div className="game-card">🔢 Code Breaker</div>
-        </Link>
-        <div className="game-card">📉 Price Prediction</div>
-      </section>
+      {/* 🔹 3D Arcade Entrance Preview */}
+      <motion.div 
+        className="arcade-preview"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        {/* This can be replaced with a Three.js scene later */}
+        <img src="/images/arcade-preview.png" alt="Arcade Entrance" className="arcade-image" />
+      </motion.div>
 
-      {/* 🔹 FOOTER */}
-      <footer className="footer">
-        <p>Follow us: 
-          <a href="#">Twitter</a> | 
-          <a href="#">Discord</a> | 
-          <a href="#">Telegram</a>
-        </p>
-        <p>© 2024 Crypto Games. All rights reserved.</p>
-      </footer>
+      {/* 🔹 Enter Arcade Button */}
+      <Link to="/arcade">
+        <motion.button 
+          className="enter-arcade-button"
+          whileHover={{ scale: 1.1, boxShadow: "0px 0px 10px #ffcc00" }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Enter Arcade
+        </motion.button>
+      </Link>
     </div>
   );
 }
