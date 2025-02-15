@@ -9,25 +9,25 @@ export default function HomePage() {
       {/* 🔹 Animated Background */}
       <div className="animated-bg"></div>
 
-      {/* 🔹 Crypto Arcade Header */}
+      {/* 🔹 Crypto Games Header */}
       <motion.h1 
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="arcade-title"
       >
-        Welcome to <span className="neon-text">Crypto Arcade</span>
+        Welcome to <span className="neon-text">Crypto Games</span>
       </motion.h1>
 
       {/* 🔹 Project Introduction Section */}
       <div className="info-section">
         <p>
-          Crypto Arcade is a cutting-edge blockchain gaming platform where you can play and win real crypto prizes! 
-          Connect your wallet, enter the arcade, and test your skills in our exciting Web3 games.
+          Play & Win Real Crypto Rewards! Step into <span className="neon-text">The Arcade</span>,
+          where blockchain meets gaming. Connect your wallet and start playing!
         </p>
       </div>
 
-      {/* 🔹 3D Arcade Entrance Preview */}
+      {/* 🔹 Arcade Entrance Preview */}
       <motion.div 
         className="arcade-preview"
         initial={{ scale: 0.9, opacity: 0 }}
@@ -48,17 +48,9 @@ export default function HomePage() {
         </motion.button>
       </Link>
 
-      {/* 🔹 Games Showcase Section */}
-      <div className="games-showcase">
-        <h2>Available Games</h2>
-        <div className="game-card">🎡 Wheel of Fortune – Spin & Win Crypto!</div>
-        <div className="game-card">🔢 Code Breaker – Crack the Code for Huge Prizes!</div>
-        <div className="game-card">💰 More Games Coming Soon!</div>
-      </div>
-
       {/* 🔹 Features Section */}
       <div className="features-section">
-        <h2>Why Play at Crypto Arcade?</h2>
+        <h2>Why Play at Crypto Games?</h2>
         <ul>
           <li>🔹 **Win Real Crypto Rewards**</li>
           <li>🔹 **Provably Fair & Transparent Games**</li>
@@ -69,7 +61,7 @@ export default function HomePage() {
 
       {/* 🔹 Footer */}
       <div className="footer">
-        <p>Crypto Arcade © 2024 | Built on Solana Blockchain</p>
+        <p>Crypto Games © 2024 | Built on Solana Blockchain</p>
       </div>
     </div>
   );
