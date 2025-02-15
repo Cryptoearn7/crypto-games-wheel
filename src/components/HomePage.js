@@ -16,8 +16,16 @@ export default function HomePage() {
         transition={{ duration: 1 }}
         className="arcade-title"
       >
-        Welcome to the <span className="neon-text">Crypto Arcade</span>
+        Welcome to <span className="neon-text">Crypto Arcade</span>
       </motion.h1>
+
+      {/* 🔹 Project Introduction Section */}
+      <div className="info-section">
+        <p>
+          Crypto Arcade is a cutting-edge blockchain gaming platform where you can play and win real crypto prizes! 
+          Connect your wallet, enter the arcade, and test your skills in our exciting Web3 games.
+        </p>
+      </div>
 
       {/* 🔹 3D Arcade Entrance Preview */}
       <motion.div 
@@ -26,7 +34,6 @@ export default function HomePage() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        {/* This can be replaced with a Three.js scene later */}
         <img src="/images/arcade-preview.png" alt="Arcade Entrance" className="arcade-image" />
       </motion.div>
 
@@ -40,6 +47,30 @@ export default function HomePage() {
           Enter Arcade
         </motion.button>
       </Link>
+
+      {/* 🔹 Games Showcase Section */}
+      <div className="games-showcase">
+        <h2>Available Games</h2>
+        <div className="game-card">🎡 Wheel of Fortune – Spin & Win Crypto!</div>
+        <div className="game-card">🔢 Code Breaker – Crack the Code for Huge Prizes!</div>
+        <div className="game-card">💰 More Games Coming Soon!</div>
+      </div>
+
+      {/* 🔹 Features Section */}
+      <div className="features-section">
+        <h2>Why Play at Crypto Arcade?</h2>
+        <ul>
+          <li>🔹 **Win Real Crypto Rewards**</li>
+          <li>🔹 **Provably Fair & Transparent Games**</li>
+          <li>🔹 **Powered by Solana Blockchain**</li>
+          <li>🔹 **No Registration Needed – Just Connect Wallet!**</li>
+        </ul>
+      </div>
+
+      {/* 🔹 Footer */}
+      <div className="footer">
+        <p>Crypto Arcade © 2024 | Built on Solana Blockchain</p>
+      </div>
     </div>
   );
 }
