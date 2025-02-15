@@ -4,6 +4,7 @@ import "../styles.css";
 export default function CodeBreaker() {
   const [userGuess, setUserGuess] = useState("");
   const [message, setMessage] = useState("");
+  const [guessedNumbers, setGuessedNumbers] = useState([]); // Track previous guesses
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   // ✅ Mocked random 5-digit number (Replace with blockchain logic later)
@@ -11,7 +12,12 @@ export default function CodeBreaker() {
 
   const handleGuess = () => {
     if (userGuess.length !== 5 || isNaN(userGuess)) {
-      setMessage("Please enter a valid 5-digit number.");
+      setMessage("⚠️ Please enter a valid 5-digit number.");
+      return;
+    }
+
+    if (guessedNumbers.includes(userGuess)) {
+      setMessage("⚠️ This number has already been guessed! Try another.");
       return;
     }
 
@@ -21,7 +27,8 @@ export default function CodeBreaker() {
       if (userGuess === correctNumber) {
         setMessage("🎉 Congratulations! You won $20,000!");
       } else {
-        setMessage("❌ Incorrect! Try again.");
+        setGuessedNumbers([...guessedNumbers, userGuess]); // Add to guessed list
+        setMessage("❌ Incorrect! Number removed from available guesses.");
       }
       setIsSubmitting(false);
     }, 1000);
@@ -29,7 +36,7 @@ export default function CodeBreaker() {
 
   return (
     <div className="code-breaker-container">
-      <h1>🔢 Crypto Code Breaker</h1>
+      <h1>🔢 Code Breaker</h1>
       <p>Enter a 5-digit code for a chance to win $20,000!</p>
 
       <input
@@ -46,6 +53,18 @@ export default function CodeBreaker() {
       </button>
 
       {message && <p className="result-message">{message}</p>}
+
+      {/* ✅ Show all previously guessed numbers */}
+      {guessedNumbers.length > 0 && (
+        <div className="guessed-numbers">
+          <h3>❌ Guessed Numbers:</h3>
+          <div className="number-grid">
+            {guessedNumbers.map((num, index) => (
+              <span key={index} className="guessed-number">{num}</span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
