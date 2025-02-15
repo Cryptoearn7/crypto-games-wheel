@@ -35,36 +35,37 @@ export default function CodeBreaker() {
   };
 
   return (
-    <div className="code-breaker-container">
-      <h1>🔢 Code Breaker</h1>
-      <p>Enter a 5-digit code for a chance to win $20,000!</p>
+    <div className="code-breaker-layout">
+      {/* ✅ Main Game Container */}
+      <div className="code-breaker-container">
+        <h1>🔢 Code Breaker</h1>
+        <p>Enter a 5-digit code for a chance to win $20,000!</p>
 
-      <input
-        type="text"
-        maxLength="5"
-        placeholder="Enter your guess"
-        value={userGuess}
-        onChange={(e) => setUserGuess(e.target.value)}
-        className="code-input"
-      />
+        <input
+          type="text"
+          maxLength="5"
+          placeholder="Enter your guess"
+          value={userGuess}
+          onChange={(e) => setUserGuess(e.target.value)}
+          className="code-input"
+        />
 
-      <button onClick={handleGuess} disabled={isSubmitting} className="guess-button">
-        {isSubmitting ? "Checking..." : "Submit Guess ($1)"}
-      </button>
+        <button onClick={handleGuess} disabled={isSubmitting} className="guess-button">
+          {isSubmitting ? "Checking..." : "Submit Guess ($1)"}
+        </button>
 
-      {message && <p className="result-message">{message}</p>}
+        {message && <p className="result-message">{message}</p>}
+      </div>
 
-      {/* ✅ Show all previously guessed numbers */}
-      {guessedNumbers.length > 0 && (
-        <div className="guessed-numbers">
-          <h3>❌ Guessed Numbers:</h3>
-          <div className="number-grid">
-            {guessedNumbers.map((num, index) => (
-              <span key={index} className="guessed-number">{num}</span>
-            ))}
-          </div>
+      {/* ✅ Incorrect Guesses Section */}
+      <div className="guessed-numbers-container">
+        <h3>❌ Guessed Numbers:</h3>
+        <div className="number-list">
+          {guessedNumbers.map((num, index) => (
+            <div key={index} className="guessed-number">{num}</div>
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
 }
