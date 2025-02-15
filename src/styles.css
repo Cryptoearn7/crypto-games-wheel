@@ -1,83 +1,21 @@
-/* 🔹 GENERAL STYLES */
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: lightblue;
-  color: black;
-  text-align: center;
+/* 🔹 ANIMATED BACKGROUND */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #002b36, #004d60);
+  animation: backgroundAnimation 10s infinite alternate;
+  z-index: -1;
 }
 
-/* 🔹 HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
+@keyframes backgroundAnimation {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.2); }
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.nav a {
-  margin: 0 15px;
-  color: white;
-  text-decoration: none;
-}
-
-.nav a:hover {
-  text-decoration: underline;
-}
-
-/* 🔹 HERO SECTION */
-.hero {
-  padding: 100px 20px;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 1.5rem;
-  margin-bottom: 40px;
-}
-
-.enter-button {
-  padding: 15px 30px;
-  font-size: 1.5rem;
-  background-color: #ffcc00;
-  color: black;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.enter-button:hover {
-  background-color: #ff9900;
-  transform: scale(1.05);
-}
-
-/* 🔹 GAME SHOWCASE */
-.games-showcase {
-  padding: 50px;
-}
-
-.game-card {
-  background: white;
-  display: inline-block;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* 🔹 CODE BREAKER LAYOUT (Main Game + Guessed Numbers Side Section) */
+/* 🔹 CODE BREAKER GAME */
 .code-breaker-layout {
   display: flex;
   justify-content: space-between;
@@ -91,37 +29,55 @@ body {
   text-align: center;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 50px;
+  backdrop-filter: blur(5px);
 }
 
-/* 🔹 Input Field */
-.code-input {
-  padding: 10px;
-  font-size: 18px;
-  width: 60%;
-  text-align: center;
-  margin: 10px 0;
-  border: 2px solid black;
-  border-radius: 5px;
-}
-
-/* 🔹 Guess Button */
-.guess-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #ffcc00;
-  color: black;
-  border: none;
+/* 🔹 Guess Box (Animated) */
+.guess-box {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: black;
+  color: lime;
+  padding: 15px;
   border-radius: 8px;
+  display: inline-block;
+  margin: 15px 0;
+}
+
+/* 🔹 Virtual Keypad */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.keypad button {
+  font-size: 1.5rem;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
   cursor: pointer;
+  background: #ffcc00;
 }
 
-.guess-button:hover {
-  background-color: #ff9900;
+.keypad button:hover {
+  background: #ff9900;
 }
 
-/* 🔹 Guessed Numbers Section (Right Side) */
+.backspace {
+  background: red !important;
+  color: white;
+}
+
+.submit-guess {
+  background: green !important;
+  color: white;
+}
+
+/* 🔹 Guessed Numbers Section */
 .guessed-numbers-container {
   width: 30%;
   background: rgba(255, 0, 0, 0.1);
@@ -132,19 +88,6 @@ body {
   overflow-y: auto;
 }
 
-.guessed-numbers-container h3 {
-  color: red;
-  font-size: 1.2rem;
-}
-
-/* 🔹 Individual Guessed Numbers */
-.number-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
 .guessed-number {
   background: red;
   color: white;
@@ -153,11 +96,4 @@ body {
   font-weight: bold;
   text-align: center;
   width: 100px;
-}
-
-/* 🔹 FOOTER */
-.footer {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 20px;
 }
