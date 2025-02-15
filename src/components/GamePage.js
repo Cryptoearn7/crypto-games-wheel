@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ThreeScene from "./ThreeScene"; // Ensure correct path
-import "./styles.css";
+import "../styles.css"; // ✅ Use correct path
 
 export default function GamePage() {
   const [walletAddress, setWalletAddress] = useState(null);
