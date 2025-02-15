@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import "../styles.css";  // ✅ Correct relative path
+import "../styles.css"; // ✅ Ensure styles are imported
 
 export default function HomePage() {
   return (
@@ -9,55 +9,47 @@ export default function HomePage() {
       {/* 🔹 Animated Background */}
       <div className="animated-bg"></div>
 
-      {/* 🔹 Crypto Games Header */}
-      <motion.h1 
-        initial={{ opacity: 0, y: -50 }}
+      {/* 🔹 Navigation Bar */}
+      <div className="top-navbar">
+        <h1 className="site-title">Crypto Games</h1>
+        <div className="nav-links">
+          <Link to="/faq">FAQ</Link>
+          <Link to="/games">Games</Link>
+          <Link to="/about">About</Link>
+        </div>
+      </div>
+
+      {/* 🔹 Main Content */}
+      <motion.div 
+        className="homepage-content"
+        initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="arcade-title"
       >
-        Welcome to <span className="neon-text">Crypto Games</span>
-      </motion.h1>
+        <h2 className="welcome-text">Step into <span className="neon-text">The Arcade</span></h2>
+        <p>Win real crypto rewards in our blockchain-powered gaming arcade!</p>
 
-      {/* 🔹 Project Introduction Section */}
-      <div className="info-section">
-        <p>
-          Play & Win Real Crypto Rewards! Step into <span className="neon-text">The Arcade</span>,
-          where blockchain meets gaming. Connect your wallet and start playing!
-        </p>
-      </div>
-
-      {/* 🔹 Arcade Entrance Preview */}
-      <motion.div 
-        className="arcade-preview"
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
-      >
-        <img src="/images/arcade-preview.png" alt="Arcade Entrance" className="arcade-image" />
-      </motion.div>
-
-      {/* 🔹 Enter Arcade Button */}
-      <Link to="/arcade">
-        <motion.button 
-          className="enter-arcade-button"
-          whileHover={{ scale: 1.1, boxShadow: "0px 0px 10px #ffcc00" }}
-          whileTap={{ scale: 0.95 }}
+        {/* 🔹 Arcade Entrance Preview */}
+        <motion.div 
+          className="arcade-preview"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
         >
-          Enter Arcade
-        </motion.button>
-      </Link>
+          <img src="/images/arcade-preview.png" alt="Arcade Entrance" className="arcade-image" />
+        </motion.div>
 
-      {/* 🔹 Features Section */}
-      <div className="features-section">
-        <h2>Why Play at Crypto Games?</h2>
-        <ul>
-          <li>🔹 **Win Real Crypto Rewards**</li>
-          <li>🔹 **Provably Fair & Transparent Games**</li>
-          <li>🔹 **Powered by Solana Blockchain**</li>
-          <li>🔹 **No Registration Needed – Just Connect Wallet!**</li>
-        </ul>
-      </div>
+        {/* 🔹 Enter Arcade Button */}
+        <Link to="/arcade">
+          <motion.button 
+            className="enter-arcade-button"
+            whileHover={{ scale: 1.1, boxShadow: "0px 0px 10px #ffcc00" }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Enter Arcade
+          </motion.button>
+        </Link>
+      </motion.div>
 
       {/* 🔹 Footer */}
       <div className="footer">
