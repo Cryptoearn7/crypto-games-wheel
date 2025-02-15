@@ -56,7 +56,7 @@ export default function HomePage() {
       <section className="games-showcase">
         <h2>Our Games</h2>
         <div className="game-card">🎡 Wheel of Fortune</div>
-        <div className="game-card">🕹️ Button Clicker</div>
+        <div className="game-card">🔢 Crypto Code Breaker</div>
         <div className="game-card">📉 Price Prediction</div>
       </section>
 
