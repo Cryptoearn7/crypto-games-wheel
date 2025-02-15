@@ -73,6 +73,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 20px;
 }
 
 /* 🔹 WELCOME TEXT */
@@ -124,26 +126,37 @@ body {
 }
 
 /* 🔹 INFO SECTIONS */
-.info-section, .featured-games, .tokenomics-section {
+.info-section {
   padding: 50px;
   margin-top: 50px;
+  text-align: left;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.info-section h2, .featured-games h2, .tokenomics-section h2 {
+.info-section h2 {
   color: #ffcc00;
   text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);
   font-size: 2rem;
+  text-align: center;
 }
 
-/* 🔹 INFO CARDS */
-.info-cards, .game-cards {
+/* 🔹 FEATURED GAMES */
+.featured-games {
+  padding: 50px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.game-cards {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 }
 
-.info-card, .game-card {
+.game-card {
   background: rgba(0, 0, 0, 0.6);
   padding: 20px;
   border-radius: 15px;
@@ -152,17 +165,23 @@ body {
   transition: transform 0.3s ease-in-out;
 }
 
-.info-card:hover, .game-card:hover {
+.game-card:hover {
   transform: scale(1.05);
 }
 
-.info-card img, .game-card img {
+.game-card img {
   width: 100px;
   height: 100px;
   margin-bottom: 10px;
 }
 
-/* 🔹 TOKENOMICS LIST */
+/* 🔹 TOKENOMICS SECTION */
+.tokenomics-section {
+  padding: 50px;
+  margin-top: 50px;
+  text-align: center;
+}
+
 .tokenomics-section ul {
   list-style: none;
   padding: 0;
@@ -193,29 +212,6 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-/* 🔹 HOVER EFFECTS FOR INTERACTIVITY */
-.interactive-button {
-  padding: 15px 30px;
-  font-size: 1.5rem;
-  background: linear-gradient(45deg, #ffcc00, #ff9900);
-  color: black;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 20px;
-  box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.6);
-  transition: all 0.3s ease-in-out;
-}
-
-.interactive-button:hover {
-  background: linear-gradient(45deg, #ff9900, #ff6600);
-  transform: scale(1.05);
-}
-
-.interactive-button:active {
-  transform: scale(0.95);
 }
 
 /* 🔹 IMAGE ZOOM EFFECT */
