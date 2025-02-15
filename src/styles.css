@@ -1,118 +1,53 @@
-/* General Styling */
+/* 🔹 GENERAL STYLES */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: lightblue; /* Light blue background */
-  color: white;
+  background: lightblue;
+  color: black;
   text-align: center;
-  overflow: hidden;
 }
 
-/* 🔹 Full-Screen 3D Scene */
-.three-container {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-/* 🔹 Fixed Top Bar */
-.top-bar {
-  width: 100%;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+/* 🔹 HEADER */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  backdrop-filter: blur(8px);
-}
-
-/* 🔹 Wallet Section (Fixed Width to Prevent Movement) */
-.wallet-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 180px;
-  justify-content: flex-start;
-}
-
-/* 🔹 Center Section (Rewards + Claim Button) */
-.center-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  flex-grow: 1;
-}
-
-/* 🔹 Rewards Display (Now same color and text size as other buttons) */
-.rewards-display {
-  font-size: 16px; /* Match other buttons */
-  font-weight: bold;
-  color: black; /* Text color same as buttons */
-  background: lightblue; /* Match Connect Wallet button */
-  padding: 10px 15px;
-  border-radius: 8px;
-  min-width: 100px; /* Ensures consistent size */
-  text-align: center;
-}
-
-/* 🔹 Buttons */
-.connect-button,
-.disconnect-button,
-.claim-button {
-  padding: 10px 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  opacity: 0.9;
-}
-
-.connect-button {
-  background: lightblue;
-}
-
-.disconnect-button {
-  background: red;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
   color: white;
 }
 
-.claim-button {
-  background: lightgreen;
+.logo {
+  font-size: 24px;
+  font-weight: bold;
 }
 
-/* 🔹 HOME PAGE STYLING */
-.home-container {
-  text-align: center;
-  padding: 100px;
-  background: lightblue;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
 }
 
-.home-container h1 {
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* 🔹 HERO SECTION */
+.hero {
+  padding: 100px 20px;
+}
+
+.hero h1 {
   font-size: 3rem;
   margin-bottom: 20px;
 }
 
-.home-container p {
+.hero p {
   font-size: 1.5rem;
   margin-bottom: 40px;
 }
 
-/* 🔹 Enter the App Button */
 .enter-button {
   padding: 15px 30px;
   font-size: 1.5rem;
@@ -122,10 +57,71 @@ body {
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(255, 204, 0, 0.6);
-  transition: background-color 0.3s, transform 0.2s;
 }
 
 .enter-button:hover {
   background-color: #ff9900;
   transform: scale(1.05);
+}
+
+/* 🔹 FEATURES SECTION */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px;
+}
+
+.feature {
+  width: 250px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* 🔹 HOW IT WORKS */
+.how-it-works {
+  padding: 50px;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.step {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔹 GAME SHOWCASE */
+.games-showcase {
+  padding: 50px;
+}
+
+.game-card {
+  background: white;
+  display: inline-block;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔹 FOOTER */
+.footer {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+}
+
+.footer a {
+  color: lightblue;
+  margin: 0 5px;
+  text-decoration: none;
 }
