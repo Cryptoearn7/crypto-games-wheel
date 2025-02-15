@@ -26,40 +26,14 @@ body {
   to { filter: brightness(1.2); }
 }
 
-/* 🔹 HEADER (Used on Home, Game Pages, and Code Breaker) */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  backdrop-filter: blur(8px);
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.nav a {
-  margin: 0 15px;
-  color: white;
-  text-decoration: none;
-}
-
-.nav a:hover {
-  text-decoration: underline;
-}
-
 /* 🔹 HOMEPAGE STYLES */
 .homepage {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
+  padding: 50px 10px;
 }
 
 /* 🔹 Arcade Title */
@@ -72,6 +46,17 @@ body {
 .neon-text {
   color: #ffcc00;
   text-shadow: 0px 0px 15px #ffcc00;
+}
+
+/* 🔹 Info Section */
+.info-section {
+  width: 80%;
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+  margin-bottom: 30px;
 }
 
 /* 🔹 Arcade Entrance Preview */
@@ -110,7 +95,7 @@ body {
   transform: scale(0.95);
 }
 
-/* 🔹 GAME SHOWCASE */
+/* 🔹 Games Showcase Section */
 .games-showcase {
   padding: 50px;
 }
@@ -122,6 +107,38 @@ body {
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+}
+
+/* 🔹 Features Section */
+.features-section {
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  max-width: 800px;
+  margin-top: 20px;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+}
+
+.features-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features-section li {
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+/* 🔹 FOOTER */
+.footer {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
 }
 
 /* 🔹 CODE BREAKER GAME LAYOUT */
@@ -230,11 +247,4 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-/* 🔹 FOOTER */
-.footer {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 20px;
 }
