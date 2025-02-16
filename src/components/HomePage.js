@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Parallax } from "react-parallax";
-import "../styles.css"; // ✅ Ensure Tailwind styles are imported
+import "../styles.css"; // Ensure Tailwind is applied
 
 export default function HomePage() {
   return (
@@ -24,9 +23,14 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* 🔹 Hero Section with Parallax Background */}
-      <Parallax bgImage="/images/arcade-bg.jpg" strength={500}>
-        <div className="h-[600px] flex flex-col items-center justify-center text-center">
+      {/* 🔹 Hero Section with Background Image */}
+      <div className="relative w-full h-[600px]">
+        <img 
+          src="/images/arcade1.jpg" 
+          alt="Arcade Background" 
+          className="absolute inset-0 w-full h-full object-cover opacity-80"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black/40">
           <motion.h1 
             className="text-5xl font-bold text-yellow-400"
             initial={{ opacity: 0, y: -50 }}
@@ -48,7 +52,7 @@ export default function HomePage() {
             </motion.button>
           </Link>
         </div>
-      </Parallax>
+      </div>
 
       {/* 🔹 Featured Games Section */}
       <div className="py-20 bg-gray-900 text-center">
