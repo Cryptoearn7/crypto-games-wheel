@@ -73,7 +73,7 @@ export default function App() {
         <Route path="/arcade" element={<ThreeScene />} />
 
         {/* 🔹 Code Breaker Game Route */}
-        <Route path="/code-breaker" element={<CodeBreaker />} />
+        <Route path="/CodeBreaker" element={<CodeBreaker />} />
       </Routes>
     </Router>
   );
