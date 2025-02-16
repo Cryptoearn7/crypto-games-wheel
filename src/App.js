@@ -7,9 +7,10 @@ import GamePage from "./components/GamePage";
 import "./styles.css"; // ✅ Ensure styles are imported
 
 export default function App() {
+  console.log("✅ Routing is working"); // ✅ Debugging message
+
   return (
     <Router>
-      {console.log("✅ Routing is working")} {/* ✅ Debugging message */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/arcade" element={<ThreeScene />} />
