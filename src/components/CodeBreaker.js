@@ -1,106 +1,82 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "../styles.css";
 
+const randomCode = () => {
+  return Array.from({ length: 5 }, () => Math.floor(Math.random() * 10));
+};
+
 export default function CodeBreaker() {
-  const [userGuess, setUserGuess] = useState("");
+  const [generatedCode, setGeneratedCode] = useState(randomCode());
+  const [userInput, setUserInput] = useState([0, 0, 0, 0, 0]);
   const [message, setMessage] = useState("");
-  const [guessedNumbers, setGuessedNumbers] = useState([]); // Track previous guesses
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [animationKey, setAnimationKey] = useState(0); // Used for animations
+  const [isUnlocked, setIsUnlocked] = useState(false);
 
-  // ✅ Mocked random 5-digit number (Replace with blockchain logic later)
-  const correctNumber = "34567";
+  const handleWheelChange = (index, direction) => {
+    if (isUnlocked) return; // Lock is open, prevent more inputs
 
-  const handleGuess = () => {
-    if (userGuess.length !== 5 || isNaN(userGuess)) {
-      setMessage("⚠️ Please enter a valid 5-digit number.");
-      return;
+    let newInput = [...userInput];
+    if (direction === "up") {
+      newInput[index] = (newInput[index] + 1) % 10;
+    } else {
+      newInput[index] = (newInput[index] - 1 + 10) % 10;
     }
-
-    if (guessedNumbers.includes(userGuess)) {
-      setMessage("⚠️ This number has already been guessed! Try another.");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    setTimeout(() => {
-      if (userGuess === correctNumber) {
-        setMessage("🎉 Congratulations! You cracked the code! 💰");
-        // Trigger explosion effect
-      } else {
-        setGuessedNumbers([...guessedNumbers, userGuess]); // Add to guessed list
-        setMessage("❌ Incorrect! Code locked.");
-      }
-      setAnimationKey((prev) => prev + 1); // Refresh animation
-      setIsSubmitting(false);
-    }, 1000);
+    setUserInput(newInput);
   };
 
-  // Virtual Keypad Functionality
-  const handleKeypadClick = (digit) => {
-    if (userGuess.length < 5) {
-      setUserGuess(userGuess + digit);
+  const checkCode = () => {
+    if (userInput.join("") === generatedCode.join("")) {
+      setIsUnlocked(true);
+      setMessage("🔓 Correct! Lock Opened!");
+    } else {
+      let correctDigits = userInput.filter((num, i) => num === generatedCode[i]).length;
+      setMessage(`❌ ${correctDigits} out of 5 correct! Try again.`);
     }
-  };
-
-  const handleBackspace = () => {
-    setUserGuess(userGuess.slice(0, -1));
   };
 
   return (
-    <div className="code-breaker-layout">
-      {/* ✅ Animated Background */}
-      <div className="animated-bg"></div>
+    <div className="code-breaker-container">
+      <h1 className="text-3xl text-yellow-400 mb-4">Code Breaker</h1>
+      <p className="text-gray-300">Turn the dials to break the code!</p>
 
-      {/* ✅ Main Game Container */}
-      <motion.div
-        key={animationKey}
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="code-breaker-container"
-      >
-        <h1>🔢 Code Breaker</h1>
-        <p>Crack the 5-digit code & win big!</p>
-
-        {/* Animated Guess Box */}
-        <motion.div className="guess-box" animate={{ scale: [0.9, 1.1, 1] }}>
-          {userGuess || "?????"}
-        </motion.div>
-
-        {/* Virtual Keypad */}
-        <div className="keypad">
-          {[..."1234567890"].map((num) => (
-            <button key={num} onClick={() => handleKeypadClick(num)}>{num}</button>
-          ))}
-          <button className="backspace" onClick={handleBackspace}>⌫</button>
-          <button className="submit-guess" onClick={handleGuess} disabled={isSubmitting}>
-            {isSubmitting ? "🔄 Checking..." : "✅ Submit"}
-          </button>
-        </div>
-
-        {message && <p className="result-message">{message}</p>}
-      </motion.div>
-
-      {/* ✅ Incorrect Guesses Section (Right Side) */}
-      <div className="guessed-numbers-container">
-        <h3>❌ Previous Guesses:</h3>
-        <div className="number-list">
-          {guessedNumbers.map((num, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="guessed-number"
+      {/* 🔹 Lock UI */}
+      <div className="lock">
+        {userInput.map((num, index) => (
+          <div key={index} className="wheel">
+            <button onClick={() => handleWheelChange(index, "up")}>▲</button>
+            <motion.div 
+              className="number-display"
+              animate={{ rotateX: [0, 180, 360] }}
+              transition={{ duration: 0.3 }}
             >
               {num}
             </motion.div>
-          ))}
-        </div>
+            <button onClick={() => handleWheelChange(index, "down")}>▼</button>
+          </div>
+        ))}
       </div>
+
+      {/* 🔹 Submit Button */}
+      <motion.button 
+        className="check-button mt-6"
+        onClick={checkCode}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        Try Code
+      </motion.button>
+
+      {/* 🔹 Unlock Animation */}
+      {isUnlocked && <motion.div 
+        className="unlock-animation"
+        animate={{ scale: [1, 1.1, 1], rotate: [0, 10, -10, 0] }}
+        transition={{ duration: 1, repeat: 3 }}
+      >
+        🔓
+      </motion.div>}
+
+      {/* 🔹 Feedback Message */}
+      <p className="mt-4 text-lg text-white">{message}</p>
     </div>
   );
 }
