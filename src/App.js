@@ -4,12 +4,12 @@ import HomePage from "./components/HomePage";
 import CodeBreaker from "./components/CodeBreaker";
 import ThreeScene from "./components/ThreeScene";
 import GamePage from "./components/GamePage";
-import "./styles.css"; // ✅ Make sure this is imported
+import "./styles.css"; // ✅ Ensure styles are imported
 
 export default function App() {
   return (
     <Router>
-      {console.log("✅ Routing is working")} {/* Debugging Line */}
+      {console.log("✅ Routing is working")} {/* ✅ Debugging message */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/arcade" element={<ThreeScene />} />
