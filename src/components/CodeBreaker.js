@@ -67,7 +67,7 @@ export default function CodeBreaker() {
 
       {/* 🔹 Submit Button */}
       <motion.button 
-        className="mt-6 px-6 py-3 bg-yellow-500 rounded-lg text-black text-lg font-bold shadow-lg hover:bg-yellow-400 transition"
+        className="mt-6 px-6 py-3 bg-yellow-500 rounded-lg text-black text-lg font-bold shadow-lg hover:scale-105 transition"
         onClick={checkCode}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -86,6 +86,9 @@ export default function CodeBreaker() {
 
       {/* 🔹 Feedback Message */}
       <p className="mt-4 text-lg text-white">{message}</p>
+
+      {/* 🔙 Back to Home */}
+      <a href="/" className="mt-8 text-yellow-400 underline text-lg">Back to Home</a>
     </div>
   );
 }
