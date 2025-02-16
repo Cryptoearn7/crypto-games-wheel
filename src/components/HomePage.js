@@ -57,7 +57,7 @@ export default function HomePage() {
           
           {/* CodeBreaker - Clickable Card */}
           <motion.div className="p-6 bg-gray-800 rounded-lg shadow-lg hover:scale-105 transition">
-            <Link to="/code-breaker">
+            <Link to="/CodeBreaker">
               <img src="/images/codebreaker-machine.png" alt="Code Breaker" className="w-48 mx-auto"/>
               <p className="mt-4 text-lg font-semibold text-yellow-400">Code Breaker</p>
             </Link>
