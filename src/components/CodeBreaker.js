@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import "../styles.css";
 
 const randomCode = () => {
   return Array.from({ length: 5 }, () => Math.floor(Math.random() * 10));
@@ -13,7 +12,7 @@ export default function CodeBreaker() {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   const handleWheelChange = (index, direction) => {
-    if (isUnlocked) return; // Lock is open, prevent more inputs
+    if (isUnlocked) return; // Lock is open, prevent inputs
 
     let newInput = [...userInput];
     if (direction === "up") {
@@ -35,30 +34,40 @@ export default function CodeBreaker() {
   };
 
   return (
-    <div className="code-breaker-container">
-      <h1 className="text-3xl text-yellow-400 mb-4">Code Breaker</h1>
-      <p className="text-gray-300">Turn the dials to break the code!</p>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-700 text-white">
+      <h1 className="text-4xl font-bold text-yellow-400 mb-6">Code Breaker</h1>
+      <p className="text-lg text-gray-300 mb-4">Turn the dials to break the code!</p>
 
       {/* 🔹 Lock UI */}
-      <div className="lock">
+      <div className="flex space-x-4 bg-gray-800 p-6 rounded-lg shadow-xl">
         {userInput.map((num, index) => (
-          <div key={index} className="wheel">
-            <button onClick={() => handleWheelChange(index, "up")}>▲</button>
+          <div key={index} className="flex flex-col items-center bg-gray-900 p-2 rounded-md shadow-md">
+            <button 
+              onClick={() => handleWheelChange(index, "up")}
+              className="text-yellow-400 text-2xl hover:text-yellow-300"
+            >
+              ▲
+            </button>
             <motion.div 
-              className="number-display"
+              className="text-3xl font-bold bg-black text-yellow-400 w-12 h-12 flex items-center justify-center rounded-md"
               animate={{ rotateX: [0, 180, 360] }}
               transition={{ duration: 0.3 }}
             >
               {num}
             </motion.div>
-            <button onClick={() => handleWheelChange(index, "down")}>▼</button>
+            <button 
+              onClick={() => handleWheelChange(index, "down")}
+              className="text-yellow-400 text-2xl hover:text-yellow-300"
+            >
+              ▼
+            </button>
           </div>
         ))}
       </div>
 
       {/* 🔹 Submit Button */}
       <motion.button 
-        className="check-button mt-6"
+        className="mt-6 px-6 py-3 bg-yellow-500 rounded-lg text-black text-lg font-bold shadow-lg hover:bg-yellow-400 transition"
         onClick={checkCode}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -68,7 +77,7 @@ export default function CodeBreaker() {
 
       {/* 🔹 Unlock Animation */}
       {isUnlocked && <motion.div 
-        className="unlock-animation"
+        className="text-6xl mt-6"
         animate={{ scale: [1, 1.1, 1], rotate: [0, 10, -10, 0] }}
         transition={{ duration: 1, repeat: 3 }}
       >
