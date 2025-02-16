@@ -9,7 +9,6 @@ export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
   const [totalRewards, setTotalRewards] = useState(0);
 
-  // ✅ Detect Wallet Connection on Load
   useEffect(() => {
     if (window.solana && window.solana.isPhantom) {
       window.solana.on("connect", () => {
@@ -31,7 +30,6 @@ export default function App() {
     }
   }, []);
 
-  // ✅ Connect Wallet
   const connectWallet = async () => {
     if (window.solana && window.solana.isPhantom) {
       try {
@@ -45,7 +43,6 @@ export default function App() {
     }
   };
 
-  // ✅ Disconnect Wallet
   const disconnectWallet = async () => {
     try {
       if (window.solana?.isPhantom) {
@@ -57,7 +54,6 @@ export default function App() {
     }
   };
 
-  // ✅ Claim Rewards
   const claimRewards = () => {
     if (!walletAddress) {
       alert("Connect your wallet first!");
@@ -74,44 +70,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
 
         {/* 🔹 Arcade (3D Scene) Route */}
-        <Route 
-          path="/arcade" 
-          element={
-            <div className="app">
-              {/* 🔹 Fixed Top Bar */}
-              <div className="top-bar">
-                {/* Wallet Section */}
-                <div className="wallet-section">
-                  {!walletAddress ? (
-                    <button className="connect-button" onClick={connectWallet}>
-                      Connect Wallet
-                    </button>
-                  ) : (
-                    <>
-                      <p className="wallet-text">{walletAddress.slice(0, 2)}...{walletAddress.slice(-4)}</p>
-                      <button className="disconnect-button" onClick={disconnectWallet}>
-                        Disconnect
-                      </button>
-                    </>
-                  )}
-                </div>
-
-                {/* Center Section (Rewards + Claim Button) */}
-                <div className="center-section">
-                  <div className="rewards-display">Rewards: {totalRewards} CRG</div>
-                  <button className="claim-button" onClick={claimRewards}>
-                    Claim
-                  </button>
-                </div>
-              </div>
-
-              {/* 3D Arcade Scene */}
-              <div className="three-container">
-                <ThreeScene />
-              </div>
-            </div>
-          } 
-        />
+        <Route path="/arcade" element={<ThreeScene />} />
 
         {/* 🔹 Code Breaker Game Route */}
         <Route path="/code-breaker" element={<CodeBreaker />} />
