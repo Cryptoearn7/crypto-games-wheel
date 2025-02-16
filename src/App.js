@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
-import CodeBreaker from "./components/CodeBreaker";
-import ThreeScene from "./components/ThreeScene"; // ✅ 3D Arcade Scene
-import "./styles.css"; // ✅ Ensure Tailwind styles are applied
+import CodeBreaker from "./components/CodeBreaker";  // ✅ Make sure this matches exactly!
+import ThreeScene from "./components/ThreeScene";
+import "./styles.css"; 
 
 export default function App() {
   const [walletAddress, setWalletAddress] = useState(null);
@@ -66,14 +66,15 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        {/* 🔹 Homepage Route */}
+        {/* 🔹 Homepage */}
         <Route path="/" element={<HomePage />} />
 
-        {/* 🔹 Arcade (3D Scene) Route */}
+        {/* 🔹 Arcade Page (3D Room) */}
         <Route path="/arcade" element={<ThreeScene />} />
 
-        {/* 🔹 Code Breaker Game Route */}
+        {/* 🔹 CodeBreaker Game Route - ✅ Fixes Navigation */}
         <Route path="/CodeBreaker" element={<CodeBreaker />} />
+
       </Routes>
     </Router>
   );
