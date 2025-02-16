@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom"; // ✅ Only include BrowserRouter here
-import App from "./App"; // ✅ App.js will handle all routing
-import "./styles.css"; 
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "./styles.css"; // ✅ Ensure styles are applied
 
 ReactDOM.render(
   <React.StrictMode>
