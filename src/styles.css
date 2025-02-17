@@ -1,209 +1,163 @@
-/* General Styling */
+/* 🔹 General Styles */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #0b0c10;
+  background: #0b132b; /* Dark blue background */
   color: white;
   text-align: center;
 }
 
-/* 🔹 Hero Section (Homepage Background Image) */
-.hero-section {
-  background: url('/images/arcade1.jpg') no-repeat center center/cover;
-  height: 90vh; /* Almost full screen */
+/* 🔹 Navbar */
+.navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  position: relative;
+  padding: 15px 30px;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 
-/* 🔹 Hero Text (Homepage) */
-.hero-text {
-  background: rgba(0, 0, 0, 0.7); /* Dark transparent background */
-  padding: 20px 40px;
-  border-radius: 10px;
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+}
+
+/* 🔹 Hero Section */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  text-align: center;
+  position: relative;
 }
 
 .hero-text h1 {
   font-size: 3rem;
   font-weight: bold;
-  margin: 0;
 }
 
-.hero-text .highlight {
-  color: #ffcc00; /* Bright arcade yellow */
+.highlight {
+  color: #ffd700;
 }
 
 .hero-text p {
-  font-size: 1.5rem;
-  margin: 10px 0;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-/* 🔹 Enter Button */
+/* ✅ Removing the background image (it’s now in HomePage.js) */
+.hero-image {
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+/* 🔹 Enter Arcade Button */
 .enter-button {
-  background: #ffcc00;
+  background: #ffd700;
   color: black;
-  padding: 10px 20px;
-  font-size: 1.2rem;
+  padding: 15px 30px;
   border: none;
+  font-size: 18px;
+  font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  transition: 0.3s;
 }
 
 .enter-button:hover {
-  background: #ff9900;
+  background: #f4c000;
+  transform: scale(1.05);
 }
 
-/* 🔹 Code Breaker Game Styling */
-.code-breaker-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #1a1a2e;
+/* 🔹 Featured Games */
+.featured-games {
+  padding: 50px 20px;
+  background: #1c2541;
 }
 
-.lock-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-/* 🔹 Number Dials (Lock) */
-.dial {
-  width: 60px;
-  height: 80px;
+.featured-games h2 {
   font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  background: #ffcc00;
-  border: 2px solid #333;
-  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
-/* 🔹 Guess Button */
-.guess-button {
-  background: #ffcc00;
-  color: black;
-  padding: 10px 15px;
-  font-size: 1.2rem;
-  margin-top: 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-
-.guess-button:hover {
-  background: #ff9900;
-}
-
-/* 🔹 Incorrect Guesses Display */
-.guess-history {
-  position: absolute;
-  right: 20px;
-  top: 100px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.guess-history p {
-  font-size: 1rem;
-  color: #ffcc00;
-}
-
-/* 🔹 Arcade Page (General Layout) */
-.arcade-container {
+.game-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  background: linear-gradient(to right, #0a0a0a, #1a1a1a);
-}
-
-/* 🔹 Arcade Machines (Game Buttons) */
-.arcade-machines {
-  display: flex;
   gap: 20px;
-  margin-top: 30px;
 }
 
-.arcade-machine {
-  background: #222;
-  padding: 15px;
+.game-card {
+  background: #3a506b;
+  padding: 20px;
   border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  width: 250px;
+  text-align: center;
+  transition: 0.3s;
 }
 
-.arcade-machine:hover {
-  transform: scale(1.1);
+.game-card:hover {
+  background: #5bc0be;
+  transform: scale(1.05);
 }
 
-/* 🔹 Navbar (Fixed Top Bar) */
-.top-bar {
-  width: 100%;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  backdrop-filter: blur(8px);
-}
-
-/* 🔹 Wallet Section */
-.wallet-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 180px;
-  justify-content: flex-start;
-}
-
-/* 🔹 Rewards Display */
-.rewards-display {
+.game-button {
+  background: #ffd700;
+  color: black;
+  padding: 10px 20px;
+  border: none;
   font-size: 16px;
   font-weight: bold;
-  color: black;
-  background: lightblue;
-  padding: 10px 15px;
   border-radius: 8px;
-  min-width: 100px;
-  text-align: center;
-}
-
-/* 🔹 Buttons */
-.connect-button,
-.disconnect-button,
-.claim-button {
-  padding: 10px 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
   cursor: pointer;
-  opacity: 0.9;
 }
 
-.connect-button {
-  background: lightblue;
+.game-button:hover {
+  background: #f4c000;
+  transform: scale(1.05);
 }
 
-.disconnect-button {
-  background: red;
-  color: white;
+/* 🔹 About Section */
+.about-section {
+  padding: 50px 20px;
+  background: #0b132b;
 }
 
-.claim-button {
-  background: lightgreen;
+.about-section h2 {
+  font-size: 2rem;
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* 🔹 Footer */
+.footer {
+  background: black;
+  padding: 15px;
+  font-size: 0.9rem;
 }
