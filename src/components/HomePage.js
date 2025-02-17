@@ -1,44 +1,89 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../styles.css"; // ✅ Ensure styles are applied
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #1a1a40, #4a4a72);
+  color: white;
+  text-align: center;
+}
 
-export default function HomePage() {
-  return (
-    <div className="homepage-container">
-      {/* ✅ Navigation Bar */}
-      <nav className="navbar">
-        <h1 className="site-title">Crypto Games Arcade</h1>
-        <div className="nav-links">
-          <a href="#">FAQ</a>
-          <a href="#">Games</a>
-          <a href="#">Community</a>
-        </div>
-      </nav>
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+}
 
-      {/* ✅ Main Section */}
-      <div className="main-content">
-        <h2>Welcome to Crypto Games Arcade</h2>
-        <p>Play exciting blockchain-powered games and win real crypto rewards!</p>
+.site-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
 
-        {/* ✅ Enter Arcade Button */}
-        <Link to="/arcade">
-          <button className="enter-button">Enter Arcade</button>
-        </Link>
-      </div>
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
 
-      {/* ✅ Featured Games Section */}
-      <div className="featured-games">
-        <h3>Featured Games</h3>
-        <div className="game-grid">
-          <div className="game-card">
-            <h4>Code Breaker</h4>
-            <p>Crack the code and win crypto!</p>
-            <Link to="/codebreaker">
-              <button className="play-button">Play Now</button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+.nav-links a:hover {
+  color: yellow;
+}
+
+/* Main Content */
+.main-content {
+  margin-top: 100px;
+}
+
+.enter-button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  background: yellow;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.enter-button:hover {
+  background: orange;
+}
+
+/* Featured Games */
+.featured-games {
+  margin-top: 50px;
+}
+
+.game-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.game-card {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.play-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: lightblue;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.play-button:hover {
+  background: dodgerblue;
 }
