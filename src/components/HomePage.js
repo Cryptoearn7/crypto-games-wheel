@@ -41,7 +41,7 @@ export default function HomePage() {
 
         {/* ✅ FIXED IMAGE PATH */}
         <img 
-          src={process.env.PUBLIC_URL + "/images/arcade1.jpg"} 
+          src={"/images/arcade1.jpg"} 
           alt="Arcade" 
           className="hero-image" 
         />
