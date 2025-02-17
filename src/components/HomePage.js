@@ -1,73 +1,108 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles.css";
+import { motion } from "framer-motion"; // ✅ Framer Motion Added
+import "../styles.css"; // ✅ Ensuring styles are applied
 
 export default function HomePage() {
   return (
-    <div className="homepage">
-      {/* 🔹 Navigation Bar */}
+    <motion.div 
+      className="homepage-container"
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      transition={{ duration: 1 }} // ✅ Smooth fade-in animation
+    >
+      {/* 🔹 NAVBAR */}
       <nav className="navbar">
-        <div className="site-title">Crypto Games Arcade 🎮</div>
+        <div className="logo">Crypto Games</div>
         <div className="nav-links">
-          <a href="#">FAQ</a>
-          <a href="#">Games</a>
-          <a href="#">Contact</a>
+          <Link to="/arcade">Arcade</Link>
+          <Link to="/games">Games</Link>
+          <Link to="/faq">FAQ</Link>
+          <Link to="/about">About</Link>
         </div>
       </nav>
 
-      {/* 🔹 Hero Section */}
-      <header className="hero-section">
-        <div className="hero-content">
-          <h1>Welcome to Crypto Games Arcade</h1>
-          <p>The ultimate hub for blockchain-powered fun!</p>
-          <Link to="/arcade">
-            <button className="enter-button">🎮 Enter Arcade</button>
-          </Link>
-        </div>
-        <div className="hero-image">
-          <img src="/images/arcade1.jpg" alt="Arcade" />
-        </div>
-      </header>
-
-      {/* 🔹 Featured Games */}
-      <section className="featured-games">
-        <h2>🔥 Featured Games</h2>
-        <div className="game-grid">
-          <div className="game-card">
-            <h3>🔐 Code Breaker</h3>
-            <p>Guess the secret code and unlock big prizes!</p>
-            <Link to="/CodeBreaker">
-              <button className="play-button">Play Now</button>
+      {/* 🔹 HERO SECTION */}
+      <div className="hero-section">
+        <motion.div 
+          className="hero-text"
+          initial={{ scale: 0.8, opacity: 0 }} 
+          animate={{ scale: 1, opacity: 1 }} 
+          transition={{ duration: 1, ease: "easeOut" }} // ✅ Scale-up effect
+        >
+          <h1>Welcome to <span className="highlight">Crypto Games</span></h1>
+          <p>Play, Win, and Earn in the Ultimate Web3 Arcade</p>
+          <motion.div whileHover={{ scale: 1.1 }}>
+            <Link to="/arcade">
+              <button className="enter-button">Enter the Arcade</button>
             </Link>
-          </div>
+          </motion.div>
+        </motion.div>
+      </div>
 
-          <div className="game-card">
-            <h3>🎡 Wheel of Fortune</h3>
-            <p>Spin and win amazing rewards!</p>
-            <button className="play-button">Coming Soon</button>
-          </div>
+      {/* 🔹 FEATURED GAMES SECTION */}
+      <div className="featured-games">
+        <h2>🎮 Featured Games</h2>
+        <div className="game-list">
+          {/* Code Breaker */}
+          <motion.div 
+            className="game-card"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 200 }} // ✅ Slight hover effect
+          >
+            <h3>Code Breaker</h3>
+            <p>Guess the 5-digit code and unlock huge rewards!</p>
+            <Link to="/codebreaker">
+              <button className="game-button">Play Now</button>
+            </Link>
+          </motion.div>
 
-          <div className="game-card">
-            <h3>📈 Crypto Predictions</h3>
-            <p>Predict market trends and earn rewards!</p>
-            <button className="play-button">Coming Soon</button>
-          </div>
+          {/* Wheel of Fortune */}
+          <motion.div 
+            className="game-card"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 200 }}
+          >
+            <h3>Wheel of Fortune</h3>
+            <p>Spin the wheel and win exciting prizes!</p>
+            <Link to="/arcade">
+              <button className="game-button">Spin Now</button>
+            </Link>
+          </motion.div>
+
+          {/* Future Games Placeholder */}
+          <motion.div 
+            className="game-card"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 200 }}
+          >
+            <h3>Coming Soon</h3>
+            <p>More games are being added to the Crypto Arcade!</p>
+            <button className="game-button" disabled>Stay Tuned</button>
+          </motion.div>
         </div>
-      </section>
+      </div>
 
-      {/* 🔹 About Section */}
-      <section className="about-section">
-        <h2>🌍 About Us</h2>
+      {/* 🔹 ABOUT SECTION */}
+      <div className="about-section">
+        <motion.h2
+          initial={{ x: -100, opacity: 0 }} 
+          animate={{ x: 0, opacity: 1 }} 
+          transition={{ duration: 1 }} // ✅ Smooth slide-in effect
+        >
+          🕹 About Crypto Games
+        </motion.h2>
         <p>
-          Crypto Games Arcade is the ultimate destination for blockchain-based gaming.
-          Play, earn, and have fun with our innovative Web3-powered games.
+          Crypto Games is a next-generation web3 arcade where players can win rewards 
+          in cryptocurrency. Whether you're spinning the wheel or cracking the code, 
+          every game is fair, transparent, and fun!
         </p>
-      </section>
+      </div>
 
-      {/* 🔹 Footer */}
+      {/* 🔹 FOOTER */}
       <footer className="footer">
-        <p>© 2024 Crypto Games Arcade. All Rights Reserved.</p>
+        <p>© 2024 Crypto Games. All rights reserved.</p>
       </footer>
-    </div>
+    </motion.div>
   );
 }
