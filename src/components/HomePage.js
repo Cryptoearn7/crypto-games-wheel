@@ -5,7 +5,7 @@ import "../styles.css"; // ✅ Ensure styles are applied
 export default function HomePage() {
   return (
     <div className="homepage-container">
-      {/* 🔹 Navigation Bar */}
+      {/* ✅ Navigation Bar */}
       <nav className="navbar">
         <h1 className="site-title">Crypto Games Arcade</h1>
         <div className="nav-links">
@@ -15,18 +15,18 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* 🔹 Main Section */}
+      {/* ✅ Main Section */}
       <div className="main-content">
         <h2>Welcome to Crypto Games Arcade</h2>
         <p>Play exciting blockchain-powered games and win real crypto rewards!</p>
 
-        {/* 🔹 Enter Arcade Button */}
+        {/* ✅ Enter Arcade Button */}
         <Link to="/arcade">
           <button className="enter-button">Enter Arcade</button>
         </Link>
       </div>
 
-      {/* 🔹 Featured Games Section */}
+      {/* ✅ Featured Games Section */}
       <div className="featured-games">
         <h3>Featured Games</h3>
         <div className="game-grid">
