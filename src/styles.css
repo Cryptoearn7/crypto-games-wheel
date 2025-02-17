@@ -1,4 +1,169 @@
-/* Code Breaker Styling */
+/* 🔹 General Website Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #1a1a40, #4a4a72);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* 🔹 Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.site-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: yellow;
+}
+
+/* 🔹 Main Content */
+.main-content {
+  margin-top: 100px;
+}
+
+.enter-button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  background: yellow;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.enter-button:hover {
+  background: orange;
+}
+
+/* 🔹 Featured Games Section */
+.featured-games {
+  margin-top: 50px;
+}
+
+.game-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.game-card {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.play-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: lightblue;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.play-button:hover {
+  background: dodgerblue;
+}
+
+/* 🔹 Arcade Room Styling */
+.three-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* 🔹 Fixed Top Bar */
+.top-bar {
+  width: 100%;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+/* 🔹 Wallet Section */
+.wallet-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 180px;
+  justify-content: flex-start;
+}
+
+/* 🔹 Rewards Display */
+.rewards-display {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  background: lightblue;
+  padding: 10px 15px;
+  border-radius: 8px;
+  min-width: 100px;
+  text-align: center;
+}
+
+/* 🔹 Buttons */
+.connect-button,
+.disconnect-button,
+.claim-button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.connect-button {
+  background: lightblue;
+}
+
+.disconnect-button {
+  background: red;
+  color: white;
+}
+
+.claim-button {
+  background: lightgreen;
+}
+
+/* ================================================= */
+/* 🔐 CODE BREAKER GAME STYLES */
+/* ================================================= */
 .code-breaker-container {
   text-align: center;
   background: linear-gradient(to right, #1a1a40, #4a4a72);
@@ -7,7 +172,7 @@
   min-height: 100vh;
 }
 
-/* Lock Dial Interface */
+/* 🔹 Lock Dial Interface */
 .lock-container {
   display: flex;
   justify-content: center;
@@ -15,7 +180,7 @@
   margin-top: 20px;
 }
 
-/* Each dial section */
+/* 🔹 Each Dial Section */
 .lock-dial {
   display: flex;
   flex-direction: column;
@@ -27,7 +192,7 @@
   width: 50px;
 }
 
-/* Dial number display */
+/* 🔹 Dial Number Display */
 .dial-number {
   font-size: 24px;
   font-weight: bold;
@@ -40,7 +205,7 @@
   margin: 5px 0;
 }
 
-/* Dial Buttons */
+/* 🔹 Dial Buttons */
 .dial-btn {
   background: #666;
   color: white;
@@ -55,7 +220,7 @@
   background: #888;
 }
 
-/* Submit Button */
+/* 🔹 Submit Button */
 .submit-button {
   margin-top: 20px;
   padding: 12px 20px;
@@ -72,14 +237,14 @@
   background: orange;
 }
 
-/* Message Styling */
+/* 🔹 Message Styling */
 .message {
   font-size: 1.2rem;
   margin-top: 15px;
   font-weight: bold;
 }
 
-/* Wrong Attempts */
+/* 🔹 Wrong Attempts */
 .attempts {
   margin-top: 20px;
   padding: 10px;
