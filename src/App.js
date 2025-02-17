@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage"; // ✅ Homepage
 import CodeBreaker from "./components/CodeBreaker"; // ✅ CodeBreaker game
 import ThreeScene from "./components/ThreeScene"; // ✅ Arcade 3D Room
-import "./styles.css"; // ✅ Ensures global styles are applied
+import "./styles.css"; // ✅ Ensure styles are applied
 
 export default function App() {
   return (
