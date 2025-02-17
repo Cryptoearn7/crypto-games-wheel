@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // ✅ Framer Motion Added
-import "../styles.css"; // ✅ Ensuring styles are applied
+import { motion } from "framer-motion"; 
+import "../styles.css"; 
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
       className="homepage-container"
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
-      transition={{ duration: 1 }} // ✅ Smooth fade-in animation
+      transition={{ duration: 1 }}
     >
       {/* 🔹 NAVBAR */}
       <nav className="navbar">
@@ -28,7 +28,7 @@ export default function HomePage() {
           className="hero-text"
           initial={{ scale: 0.8, opacity: 0 }} 
           animate={{ scale: 1, opacity: 1 }} 
-          transition={{ duration: 1, ease: "easeOut" }} // ✅ Scale-up effect
+          transition={{ duration: 1, ease: "easeOut" }}
         >
           <h1>Welcome to <span className="highlight">Crypto Games</span></h1>
           <p>Play, Win, and Earn in the Ultimate Web3 Arcade</p>
@@ -38,6 +38,13 @@ export default function HomePage() {
             </Link>
           </motion.div>
         </motion.div>
+
+        {/* ✅ FIXED IMAGE PATH */}
+        <img 
+          src={process.env.PUBLIC_URL + "/images/arcade1.jpg"} 
+          alt="Arcade" 
+          className="hero-image" 
+        />
       </div>
 
       {/* 🔹 FEATURED GAMES SECTION */}
@@ -45,11 +52,7 @@ export default function HomePage() {
         <h2>🎮 Featured Games</h2>
         <div className="game-list">
           {/* Code Breaker */}
-          <motion.div 
-            className="game-card"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 200 }} // ✅ Slight hover effect
-          >
+          <motion.div className="game-card" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 200 }}>
             <h3>Code Breaker</h3>
             <p>Guess the 5-digit code and unlock huge rewards!</p>
             <Link to="/codebreaker">
@@ -58,11 +61,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Wheel of Fortune */}
-          <motion.div 
-            className="game-card"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 200 }}
-          >
+          <motion.div className="game-card" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 200 }}>
             <h3>Wheel of Fortune</h3>
             <p>Spin the wheel and win exciting prizes!</p>
             <Link to="/arcade">
@@ -71,11 +70,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Future Games Placeholder */}
-          <motion.div 
-            className="game-card"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 200 }}
-          >
+          <motion.div className="game-card" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 200 }}>
             <h3>Coming Soon</h3>
             <p>More games are being added to the Crypto Arcade!</p>
             <button className="game-button" disabled>Stay Tuned</button>
@@ -85,11 +80,7 @@ export default function HomePage() {
 
       {/* 🔹 ABOUT SECTION */}
       <div className="about-section">
-        <motion.h2
-          initial={{ x: -100, opacity: 0 }} 
-          animate={{ x: 0, opacity: 1 }} 
-          transition={{ duration: 1 }} // ✅ Smooth slide-in effect
-        >
+        <motion.h2 initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1 }}>
           🕹 About Crypto Games
         </motion.h2>
         <p>
