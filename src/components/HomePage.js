@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles.css"; // ✅ Ensure styles are applied
+import "../styles.css"; // ✅ Ensure styles are applied
 
 export default function HomePage() {
   return (
