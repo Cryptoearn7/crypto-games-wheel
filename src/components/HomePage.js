@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; 
-import "../styles.css"; 
+import { motion } from "framer-motion";
+import "../styles.css";
+import arcadeImage from "../assets/arcade1.jpg"; // ✅ Importing the image
 
 export default function HomePage() {
   return (
-    <motion.div 
+    <motion.div
       className="homepage-container"
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       {/* 🔹 NAVBAR */}
@@ -24,10 +25,10 @@ export default function HomePage() {
 
       {/* 🔹 HERO SECTION */}
       <div className="hero-section">
-        <motion.div 
+        <motion.div
           className="hero-text"
-          initial={{ scale: 0.8, opacity: 0 }} 
-          animate={{ scale: 1, opacity: 1 }} 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
           <h1>Welcome to <span className="highlight">Crypto Games</span></h1>
@@ -39,12 +40,8 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
 
-        {/* ✅ FIXED IMAGE PATH */}
-        <img 
-          src={"/images/arcade1.jpg"} 
-          alt="Arcade" 
-          className="hero-image" 
-        />
+        {/* ✅ Image Fix - Now Imported Properly */}
+        <img src={arcadeImage} alt="Arcade" className="hero-image" />
       </div>
 
       {/* 🔹 FEATURED GAMES SECTION */}
